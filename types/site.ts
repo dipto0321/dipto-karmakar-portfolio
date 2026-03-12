@@ -2,6 +2,8 @@ export interface SiteConfig {
   name: string
   title: string
   description: string
+  siteUrl: string
+  keywords: string[]
   overview: string[]
   specializations: string[]
   resumePath: string

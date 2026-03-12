@@ -19,8 +19,37 @@ const fontMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} | ${siteConfig.title}`,
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: {
+    default: `${siteConfig.name} — ${siteConfig.title}`,
+    template: `%s | ${siteConfig.name}`,
+  },
   description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],
+  creator: siteConfig.name,
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.name,
+    title: `${siteConfig.name} — ${siteConfig.title}`,
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} — ${siteConfig.title}`,
+    description: siteConfig.description,
+    creator: "@diptokarmakar",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+  alternates: {
+    canonical: siteConfig.siteUrl,
+  },
 }
 
 export default function RootLayout({
@@ -40,6 +69,20 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-screen bg-background text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: siteConfig.name,
+              jobTitle: siteConfig.title,
+              url: siteConfig.siteUrl,
+              sameAs: [siteConfig.contact.linkedin, siteConfig.contact.github],
+              knowsAbout: siteConfig.keywords,
+            }),
+          }}
+        />
         <ThemeProvider>
           <SiteHeader />
           {children}
