@@ -1,19 +1,47 @@
-import { Button } from "@/components/ui/button"
+import Link from "next/link"
+
+import { siteConfig } from "@/content/site"
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
+    <main className="min-h-svh">
+      <section className="mx-auto flex min-h-svh w-full max-w-5xl flex-col justify-center gap-10 px-6 py-24 sm:px-10">
+        <div className="space-y-6">
+          <p className="font-mono text-xs tracking-[0.3em] text-primary uppercase">
+            Portfolio Foundation
+          </p>
+          <div className="space-y-4">
+            <h1 className="max-w-4xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+              {siteConfig.name}
+            </h1>
+            <p className="text-xl text-muted-foreground sm:text-2xl">{siteConfig.title}</p>
+            <p className="max-w-3xl text-balance text-base leading-8 text-muted-foreground sm:text-lg">
+              {siteConfig.description}
+            </p>
+          </div>
         </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
+
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href={siteConfig.contact.linkedin}
+            className="rounded-full border border-border bg-card px-5 py-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+          >
+            LinkedIn
+          </Link>
+          <Link
+            href={siteConfig.contact.github}
+            className="rounded-full border border-border bg-card px-5 py-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+          >
+            GitHub
+          </Link>
+          <Link
+            href={siteConfig.contact.email}
+            className="rounded-full border border-border bg-card px-5 py-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+          >
+            Email
+          </Link>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }
