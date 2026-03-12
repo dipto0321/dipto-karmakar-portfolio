@@ -1,10 +1,12 @@
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 
-import "./globals.css"
+import { SiteFooter } from "@/components/layout/site-footer"
+import { SiteHeader } from "@/components/layout/site-header"
 import { ThemeProvider } from "@/components/layout/theme-provider"
 import { siteConfig } from "@/content/site"
 import { cn } from "@/lib/utils"
+import "./globals.css"
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -38,7 +40,11 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-screen bg-background text-foreground">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </ThemeProvider>
       </body>
     </html>
   )

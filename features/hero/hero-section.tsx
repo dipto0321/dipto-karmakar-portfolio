@@ -1,7 +1,6 @@
 import Link from "next/link"
 
 import { Section } from "@/components/layout/section"
-import { ThemeToggle } from "@/components/layout/theme-toggle"
 import { AnimatedWrapper } from "@/components/shared/animated-wrapper"
 import { GradientBorder } from "@/components/shared/gradient-border"
 import { SkillBadge } from "@/components/shared/skill-badge"
@@ -15,10 +14,6 @@ export function HeroSection() {
       className="relative overflow-hidden pt-6 sm:pt-8 lg:pt-10"
       containerClassName="space-y-12"
     >
-      <div className="flex justify-end">
-        <ThemeToggle />
-      </div>
-
       <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:gap-12">
         <AnimatedWrapper className="space-y-8">
           <div className="space-y-6">
