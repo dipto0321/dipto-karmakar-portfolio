@@ -2,46 +2,46 @@ import type { LeadershipHighlight, LeadershipStat } from "@/types/leadership"
 
 export const leadershipStats: LeadershipStat[] = [
   {
-    value: "50+",
-    label: "Engineers mentored",
-    context: "Across multiple distributed teams",
+    value: "400+",
+    label: "Code reviews",
+    context: "Delivered as Technical Support Engineer at Microverse",
   },
   {
-    value: "3",
-    label: "Team leads grown",
-    context: "From IC to leadership roles",
+    value: "20+",
+    label: "Developers mentored",
+    context: "Hands-on coaching, feedback, and practical support",
   },
   {
-    value: "8",
-    label: "Cross-functional squads",
-    context: "Led architecture decisions as tech lead",
+    value: "10+",
+    label: "Review team size managed",
+    context: "Managed part-time code reviewers",
   },
   {
-    value: "2×",
-    label: "Team velocity uplift",
-    context: "After introducing structured code-review practices",
+    value: "15%",
+    label: "Faster review turnaround",
+    context: "Improved process quality and response times",
   },
 ]
 
 export const leadershipHighlights: LeadershipHighlight[] = [
   {
-    title: "Engineering culture",
+    title: "Async collaboration",
     description:
-      "Built async-first documentation habits (ADRs, runbooks, post-mortems) that cut production incident recovery time by 35 % across two teams.",
+      "Work effectively across remote teams using clear written updates, scoped tickets, and documented decisions.",
   },
   {
-    title: "Technical hiring",
+    title: "Cross-team communication",
     description:
-      "Designed and ran take-home challenge pipelines, standardised interview rubrics, and screened 100+ candidates for senior frontend roles.",
+      "Collaborate with backend engineers, product managers, and designers to align delivery against product goals.",
   },
   {
-    title: "Knowledge sharing",
+    title: "Architecture decision making",
     description:
-      "Ran bi-weekly internal tech talks and pair-programming sessions, creating a team library of documented patterns still in active use.",
+      "Translate complex requirements and Figma systems into reusable frontend architecture patterns.",
   },
   {
-    title: "Roadmap influence",
+    title: "Technical mentorship",
     description:
-      "Collaborated with PMs and design to shape quarterly roadmaps, advocating for technical debt allocation and platform investment priorities.",
+      "Support developers through code review, practical guidance, and feedback loops that improve implementation quality.",
   },
 ]

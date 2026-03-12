@@ -2,33 +2,36 @@ import type { ImpactStat } from "@/types/impact"
 
 export const impactStats: ImpactStat[] = [
   {
+    value: "40%",
+    label: "Faster checkout",
+    description:
+      "Reduced waiting time with WebSocket pairing and live payment tracking",
+  },
+  {
+    value: "30%",
+    label: "Faster UI delivery",
+    description:
+      "Cut development time via reusable React component architecture",
+  },
+  {
+    value: "20%",
+    label: "Higher activation",
+    description: "Improved onboarding and invitation flow for SaaS users",
+  },
+  {
+    value: "400+",
+    label: "Code reviews",
+    description: "Delivered with mentorship-focused, quality-first feedback",
+  },
+  {
+    value: "20+",
+    label: "Developers mentored",
+    description:
+      "Guided engineers through practical growth and delivery standards",
+  },
+  {
     value: "10+",
-    label: "Years of Experience",
-    description: "Building production-grade web applications end-to-end",
-  },
-  {
-    value: "50+",
-    label: "Engineers Mentored",
-    description: "Levelled-up across distributed remote-first teams",
-  },
-  {
-    value: "3×",
-    label: "Avg Performance Lift",
-    description: "Across critical-path React and Node.js optimisations",
-  },
-  {
-    value: "99.9%",
-    label: "Uptime SLA",
-    description: "Maintained across multi-tenant B2B SaaS products",
-  },
-  {
-    value: "5M+",
-    label: "Users Served",
-    description: "By systems I designed and shipped to production",
-  },
-  {
-    value: "30+",
-    label: "OSS Contributions",
-    description: "Merged PRs across the React ecosystem and tooling",
+    label: "Years shipping",
+    description: "Building scalable, high-performance web applications",
   },
 ]

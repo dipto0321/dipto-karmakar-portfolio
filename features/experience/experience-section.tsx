@@ -17,14 +17,11 @@ export function ExperienceSection() {
 
       <div className="relative mt-14">
         {/* Vertical line */}
-        <div className="absolute top-2 bottom-2 left-[0.34rem] hidden w-px bg-border/60 md:left-44.5 md:block" />
+        <div className="absolute top-2 bottom-2 left-[0.34rem] hidden w-px bg-border/60 md:left-56 md:block" />
 
         <div className="space-y-10">
-          {experiences.map((exp, i) => (
-            <AnimatedWrapper
-              key={exp.id}
-              transition={{ duration: 0.45, ease: "easeOut", delay: i * 0.1 }}
-            >
+          {experiences.map((exp) => (
+            <div key={exp.id}>
               <TimelineItem
                 period={exp.period}
                 role={exp.role}
@@ -32,7 +29,7 @@ export function ExperienceSection() {
                 impact={exp.impact}
                 technologies={exp.technologies}
               />
-            </AnimatedWrapper>
+            </div>
           ))}
         </div>
       </div>

@@ -68,7 +68,7 @@ export default function RootLayout({
         fontSans.variable
       )}
     >
-      <body className="min-h-screen bg-background text-foreground">
+      <body className="min-h-screen overflow-x-hidden bg-background text-foreground">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -78,6 +78,10 @@ export default function RootLayout({
               name: siteConfig.name,
               jobTitle: siteConfig.title,
               url: siteConfig.siteUrl,
+              email: siteConfig.contact.email.replace("mailto:", ""),
+              telephone: siteConfig.contact.phone,
+              address: siteConfig.location,
+              description: siteConfig.summary,
               sameAs: [siteConfig.contact.linkedin, siteConfig.contact.github],
               knowsAbout: siteConfig.keywords,
             }),
