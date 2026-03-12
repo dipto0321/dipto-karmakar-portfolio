@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { SiteFooter } from "@/components/layout/site-footer"
 import { SiteHeader } from "@/components/layout/site-header"
 import { ThemeProvider } from "@/components/layout/theme-provider"
+import { ScrollProgress } from "@/components/motion/scroll-progress"
 import { siteConfig } from "@/content/site"
 import { cn } from "@/lib/utils"
 import "./globals.css"
@@ -88,6 +89,7 @@ export default function RootLayout({
           }}
         />
         <ThemeProvider>
+          <ScrollProgress />
           <SiteHeader />
           {children}
           <SiteFooter />
