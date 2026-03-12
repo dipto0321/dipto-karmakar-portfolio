@@ -2,9 +2,10 @@ import { Section } from "@/components/layout/section"
 import { AnimatedWrapper } from "@/components/shared/animated-wrapper"
 import { Heading } from "@/components/shared/heading"
 import { ProjectCard } from "@/components/shared/project-card"
-import { projects } from "@/content/projects"
+import { getProjects } from "@/lib/supabase/queries/projects"
 
-export function ProjectsSection() {
+export async function ProjectsSection() {
+  const projects = await getProjects()
   const featured = projects.filter((p) => p.featured)
   const rest = projects.filter((p) => !p.featured)
 
