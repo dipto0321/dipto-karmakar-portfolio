@@ -1,0 +1,16 @@
+Dipto Karmakar
+Senior Software Engineer
+
+Summary
+Senior software engineer focused on scalable React applications, frontend architecture, high-performance UI systems, and remote-first product engineering.
+
+Specializations
+- React architecture
+- Real-time applications
+- Performance-focused UI
+- Remote-first engineering teams
+
+Public links
+Email: dipto.karmakar.dev@gmail.com
+LinkedIn: https://www.linkedin.com/in/dipto-karmakar
+GitHub: https://github.com/diptokarmakar

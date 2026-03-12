@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/layout/theme-provider"
 import { siteConfig } from "@/content/site"
 import { cn } from "@/lib/utils"
 
@@ -30,7 +30,12 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", fontSans.variable)}
+      className={cn(
+        "antialiased",
+        fontMono.variable,
+        "font-sans",
+        fontSans.variable
+      )}
     >
       <body className="min-h-screen bg-background text-foreground">
         <ThemeProvider>{children}</ThemeProvider>
