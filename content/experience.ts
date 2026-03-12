@@ -1,0 +1,71 @@
+import type { ExperienceItem } from "@/types/experience"
+
+export const experiences: ExperienceItem[] = [
+  {
+    id: "senior-swe-current",
+    role: "Senior Software Engineer",
+    company: "Remote · Contract",
+    period: "2022 – Present",
+    location: "Remote",
+    current: true,
+    impact: [
+      "Architected and shipped a real-time collaboration layer (CRDTs + WebSockets) serving 500+ concurrent users with sub-50 ms sync latency.",
+      "Led frontend platform migration from Create React App to Next.js App Router — halved LCP and eliminated client-side routing flicker.",
+      "Established a shared component design system adopted by three product squads, cutting per-team UI development time by ~40 %.",
+      "Mentored five mid-level engineers through structured 1-on-1 programmes; three were promoted within 18 months.",
+    ],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Yjs",
+      "WebSockets",
+      "Node.js",
+      "PostgreSQL",
+      "Redis",
+    ],
+  },
+  {
+    id: "swe-b2b",
+    role: "Software Engineer",
+    company: "B2B SaaS Startup · Full-time",
+    period: "2019 – 2022",
+    location: "Remote",
+    impact: [
+      "Built an analytics dashboard processing 2 M+ daily events with virtualised rendering keeping FPS above 60 on 100 k-row datasets.",
+      "Implemented per-tenant row-level security with PostgreSQL RLS, enabling multi-tenant data isolation with zero application-layer overhead.",
+      "Reduced CI pipeline duration from 22 min to 4 min via Nx affected builds, remote caching, and parallelised Playwright shards.",
+      "Drove adoption of TypeScript to 95 % coverage across the monorepo, eliminating an entire class of production null-reference bugs.",
+    ],
+    technologies: [
+      "React",
+      "TypeScript",
+      "tRPC",
+      "Prisma",
+      "PostgreSQL",
+      "Nx",
+      "AWS",
+      "GitHub Actions",
+    ],
+  },
+  {
+    id: "fe-engineer",
+    role: "Frontend Engineer",
+    company: "Digital Agency · Full-time",
+    period: "2016 – 2019",
+    location: "On-site",
+    impact: [
+      "Delivered 15+ client web applications across e-commerce, fintech, and media verticals on time and within budget.",
+      "Introduced ESLint + Prettier standardisation and pre-commit hooks, cutting code-review cycles by 30 %.",
+      "Mentored three junior developers on React patterns, testing discipline, and accessible HTML semantics.",
+    ],
+    technologies: [
+      "React",
+      "JavaScript",
+      "Redux",
+      "SCSS",
+      "Webpack",
+      "REST APIs",
+    ],
+  },
+]
