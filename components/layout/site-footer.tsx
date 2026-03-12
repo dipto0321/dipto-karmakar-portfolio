@@ -1,50 +1,18 @@
-import Link from "next/link"
-
 import { Container } from "@/components/layout/container"
-import { siteConfig } from "@/content/site"
 
 const year = new Date().getFullYear()
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/40 py-12">
+    <footer className="border-t border-border/40 bg-linear-to-b from-transparent to-card/30 py-10">
       <Container>
-        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          {/* Brand */}
-          <div className="space-y-1 text-center sm:text-left">
-            <p className="font-semibold text-foreground">{siteConfig.name}</p>
-            <p className="text-sm text-muted-foreground">{siteConfig.title}</p>
-          </div>
-
-          {/* Social links */}
-          <div className="flex items-center gap-4">
-            <Link
-              href={siteConfig.contact.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              LinkedIn
-            </Link>
-            <Link
-              href={siteConfig.contact.github}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              GitHub
-            </Link>
-            <Link
-              href={siteConfig.contact.email}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Email
-            </Link>
-          </div>
-
-          {/* Legal */}
+        <div className="flex flex-col items-center gap-4 text-center">
+          <p className="font-mono text-[11px] tracking-[0.28em] text-muted-foreground/70 uppercase">
+            Let’s build something meaningful together.
+          </p>
+          <div className="h-px w-24 bg-linear-to-r from-transparent via-primary/45 to-transparent" />
           <p className="text-xs text-muted-foreground">
-            © {year} {siteConfig.name}
+            © {year} Built with ❤️ by Dipto Karmakar. All rights reserved.
           </p>
         </div>
       </Container>
