@@ -1,7 +1,7 @@
-import { impactStats } from "@/content/impact"
+import { Section } from "@/components/layout/section"
 import { AnimatedWrapper } from "@/components/shared/animated-wrapper"
 import { Heading } from "@/components/shared/heading"
-import { Section } from "@/components/layout/section"
+import { impactStats } from "@/content/impact"
 import { cn } from "@/lib/utils"
 
 export function ImpactSection() {
@@ -25,7 +25,7 @@ export function ImpactSection() {
             <div
               className={cn(
                 "group relative flex flex-col gap-2 rounded-3xl border border-border/60 bg-card/60 p-6 sm:p-8",
-                "hover:border-primary/40 hover:bg-card/80 transition-colors duration-300"
+                "transition-colors duration-300 hover:border-primary/40 hover:bg-card/80"
               )}
             >
               <span className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
