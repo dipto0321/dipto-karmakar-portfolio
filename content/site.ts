@@ -29,6 +29,7 @@ export const siteConfig: SiteConfig = {
     "Remote-first engineering teams",
   ],
   resumePath: "/dipto-karmakar-resume.txt",
+  avatarPath: "/avatar.jpg",
   contact: {
     email: "mailto:dipto.karmakar.dev@gmail.com",
     linkedin: "https://www.linkedin.com/in/dipto-karmakar",

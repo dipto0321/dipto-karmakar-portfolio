@@ -7,6 +7,7 @@ export interface SiteConfig {
   overview: string[]
   specializations: string[]
   resumePath: string
+  avatarPath: string
   contact: {
     email: string
     linkedin: string

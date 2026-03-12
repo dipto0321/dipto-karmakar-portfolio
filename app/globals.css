@@ -98,3 +98,60 @@
     text-wrap: balance;
   }
 }
+
+/* ─── Animated conic-gradient border ─────────────────────────────────────── */
+@property --gb-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gb-spin {
+  to {
+    --gb-angle: 360deg;
+  }
+}
+
+@keyframes gb-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 18px  2px rgba(96,  165, 250, 0.28),
+      0 0 48px  6px rgba(129, 140, 248, 0.16),
+      0 0 90px 12px rgba(167, 139, 250, 0.10);
+  }
+  50% {
+    box-shadow:
+      0 0 28px  4px rgba(96,  165, 250, 0.45),
+      0 0 64px 10px rgba(129, 140, 248, 0.26),
+      0 0 120px 20px rgba(167, 139, 250, 0.16);
+  }
+}
+
+.gradient-border-animated {
+  animation:
+    gb-spin  6s linear infinite,
+    gb-pulse 4s ease-in-out infinite;
+  background: conic-gradient(
+    from var(--gb-angle),
+    rgba(96,  165, 250, 0.95)  0deg,
+    rgba(129, 140, 248, 0.90)  120deg,
+    rgba(167, 139, 250, 0.95)  240deg,
+    rgba(96,  165, 250, 0.95)  360deg
+  );
+}
+
+/* Strip the glow — keep only the spinning border */
+.gradient-border-no-glow {
+  animation: gb-spin 6s linear infinite;
+}
+
+/* Light mode: darker stops to stay visible against a white background */
+:root:not(.dark) .gradient-border-animated {
+  background: conic-gradient(
+    from var(--gb-angle),
+    rgba(59,  130, 246, 0.95)  0deg,
+    rgba(99,  102, 241, 0.90)  120deg,
+    rgba(139,  92, 246, 0.95)  240deg,
+    rgba(59,  130, 246, 0.95)  360deg
+  );
+}
