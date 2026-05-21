@@ -11,4 +11,5 @@ export interface Project {
   architectureHighlights: string[]
   links: ProjectLink[]
   featured: boolean
+  aiAssisted?: boolean
 }

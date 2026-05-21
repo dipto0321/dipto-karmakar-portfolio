@@ -23,9 +23,9 @@ export function HeroSection() {
             </p>
 
             {/* Avatar + name/title */}
-            <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-end sm:gap-6">
-              <div className="gradient-border-animated gradient-border-no-glow w-fit shrink-0 rounded-[20px] p-px">
-                <div className="relative h-44 w-36 overflow-hidden rounded-[19px] sm:h-52 sm:w-44">
+            <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-6">
+              <div className="gradient-border-animated w-fit shrink-0 rounded-2xl p-px">
+                <div className="relative h-36 w-36 overflow-hidden rounded-xl sm:h-44 sm:w-44">
                   <Image
                     src={siteConfig.avatarPath}
                     alt={siteConfig.name}
@@ -43,6 +43,10 @@ export function HeroSection() {
                 <p className="mt-2 text-lg text-muted-foreground sm:text-xl lg:text-2xl">
                   {siteConfig.title}
                 </p>
+                <h2 className="gradient-text mt-4 max-w-2xl text-2xl leading-tight font-semibold sm:text-3xl lg:text-3xl">
+                  I build scalable frontend architecture at the intersection of
+                  systems thinking, AI-assisted workflows, and product strategy.
+                </h2>
               </div>
             </div>
 

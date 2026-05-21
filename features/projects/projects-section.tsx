@@ -3,12 +3,14 @@ import { MotionReveal } from "@/components/motion/motion-reveal"
 import { MotionSection } from "@/components/motion/motion-section"
 import { Heading } from "@/components/shared/heading"
 import { ProjectCard } from "@/components/shared/project-card"
+import { projects as localProjects } from "@/content/projects"
 import { getProjects } from "@/lib/supabase/queries/projects"
 
 export async function ProjectsSection() {
   const projects = await getProjects()
-  const featured = projects.filter((p) => p.featured)
-  const rest = projects.filter((p) => !p.featured)
+  const allProjects = projects && projects.length > 0 ? projects : localProjects
+  const featured = allProjects.filter((p) => p.featured)
+  const rest = allProjects.filter((p) => !p.featured)
   const hasProjects = featured.length > 0 || rest.length > 0
 
   return (
@@ -33,23 +35,24 @@ export async function ProjectsSection() {
 
           {hasProjects && (
             <>
-              <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {featured.map((project) => (
-                  <MotionReveal key={project.id}>
-                    <ProjectCard project={project} />
+              <div className="mt-14 flex flex-col gap-6">
+                {featured.length > 0 && (
+                  <MotionReveal key={featured[0].id}>
+                    <ProjectCard
+                      project={featured[0]}
+                      className="featured md:col-span-5"
+                    />
                   </MotionReveal>
-                ))}
-              </div>
+                )}
 
-              {rest.length > 0 && (
-                <div className="mt-6 grid gap-6 md:grid-cols-2">
+                <div className="grid grid-cols-1 gap-6 md:col-span-7 md:grid-cols-2">
                   {rest.map((project) => (
                     <MotionReveal key={project.id}>
                       <ProjectCard project={project} />
                     </MotionReveal>
                   ))}
                 </div>
-              )}
+              </div>
             </>
           )}
         </MotionReveal>

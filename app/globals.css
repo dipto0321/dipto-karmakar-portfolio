@@ -4,73 +4,71 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ─── CARBON SIGNAL ─────────────────────────────────────────────────────────
-   Senior Frontend Engineer · SaaS Systems · Precision & Performance
-   Accent:   Electric Cyan-Teal  oklch(0.72 0.20 195)
-   Dark bg:  Near-Black Navy     oklch(0.10 0.018 248)
-   Light bg: Cool Pearl          oklch(0.97 0.007 240)
+/* ─── THE MIND OF THE ARCHITECT — DESIGN TOKENS ───────────────────────────
+   Dark theme inspired by late-night deep work and systems thinking
+   Palette: Obsidian Night, Deep Slate, Electric Cyan (Aurora), Muted Amethyst
 ──────────────────────────────────────────────────────────────────────────── */
 
 :root {
-  /* Light — Structured, clean, authoritative */
-  --background: oklch(0.97 0.007 240);     /* cool pearl */
-  --foreground: oklch(0.13 0.025 248);     /* deep navy-slate */
+  /* Light tokens (fallback) */
+  --background: #F7FAFC;        /* very light neutral */
+  --foreground: #0B1220;        /* deep text on light */
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.13 0.025 248);
+  --card: #FFFFFF;
+  --card-foreground: #0B1220;
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.13 0.025 248);
+  --popover: #FFFFFF;
+  --popover-foreground: #0B1220;
 
-  --primary: oklch(0.54 0.21 195);         /* teal-cyan, rich on light bg */
-  --primary-foreground: oklch(0.99 0 0);
+  --primary: #00E5FF;           /* Electric Cyan / Aurora */
+  --primary-foreground: #071021;
 
-  --secondary: oklch(0.93 0.013 240);      /* steel blue-gray */
-  --secondary-foreground: oklch(0.22 0.025 248);
+  --secondary: #9D4EDD;         /* Muted Amethyst */
+  --secondary-foreground: #071021;
 
-  --muted: oklch(0.91 0.015 240);
-  --muted-foreground: oklch(0.50 0.022 242);
+  --muted: #94A3B8;             /* Atmospheric Gray */
+  --muted-foreground: #6B7280;
 
-  --accent: oklch(0.88 0.042 195);         /* pale teal tint */
-  --accent-foreground: oklch(0.18 0.025 248);
+  --accent: #00E5FF;
+  --accent-foreground: #071021;
 
-  --destructive: oklch(0.58 0.22 28);
-  --border: oklch(0.87 0.015 240);
-  --input: oklch(0.87 0.015 240);
+  --destructive: #FF6B6B;
+  --border: rgba(11,15,25,0.06);
+  --input: rgba(11,15,25,0.06);
 
-  --ring: oklch(0.54 0.21 195 / 40%);
+  --ring: rgba(0,229,255,0.28);
 
   --radius: 0.875rem;
 }
 
 .dark {
-  /* Dark — Deep midnight, electric precision, premium dashboard */
-  --background: oklch(0.10 0.018 248);     /* near-black navy */
-  --foreground: oklch(0.95 0.008 240);     /* cool near-white */
+  /* Dark tokens — primary workspace */
+  --background: #0B0F19;        /* Obsidian Night */
+  --foreground: #E2E8F0;        /* Crisp Silver */
 
-  --card: oklch(0.16 0.018 250);           /* elevated dark panel */
-  --card-foreground: oklch(0.95 0.008 240);
+  --card: #161F30;              /* Deep Slate */
+  --card-foreground: #E2E8F0;
 
-  --popover: oklch(0.16 0.018 250);
-  --popover-foreground: oklch(0.95 0.008 240);
+  --popover: #161F30;
+  --popover-foreground: #E2E8F0;
 
-  --primary: oklch(0.72 0.20 195);         /* electric cyan-teal */
-  --primary-foreground: oklch(0.10 0.018 248);
+  --primary: #00E5FF;           /* Electric Cyan / Aurora */
+  --primary-foreground: #071021;
 
-  --secondary: oklch(0.22 0.020 252);
-  --secondary-foreground: oklch(0.95 0.008 240);
+  --secondary: #9D4EDD;         /* Muted Amethyst */
+  --secondary-foreground: #F3E8FF;
 
-  --muted: oklch(0.20 0.018 250);
-  --muted-foreground: oklch(0.64 0.016 245);
+  --muted: #94A3B8;             /* Atmospheric Gray */
+  --muted-foreground: #94A3B8;
 
-  --accent: oklch(0.24 0.04 195);          /* deep teal tint */
-  --accent-foreground: oklch(0.95 0.008 240);
+  --accent: #00E5FF;
+  --accent-foreground: #0B0F19;
 
-  --destructive: oklch(0.68 0.20 22);
-  --border: oklch(1 0 0 / 7%);
-  --input: oklch(1 0 0 / 10%);
+  --destructive: #FF6B6B;
+  --border: rgba(255,255,255,0.06);
+  --input: rgba(255,255,255,0.06);
 
-  --ring: oklch(0.72 0.20 195 / 45%);
+  --ring: rgba(0,229,255,0.40);
 }
 
 @theme inline {
@@ -147,8 +145,8 @@
   /* Glass card surface */
   .glass-card {
     backdrop-filter: blur(16px) saturate(180%);
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   :root:not(.dark) .glass-card {
@@ -167,6 +165,14 @@
     box-shadow:
       0 8px 32px rgba(6, 182, 212, 0.20),
       0 2px 8px  rgba(6, 182, 212, 0.10);
+  }
+
+  /* Focused card — subtle ring and border glow for accessibility */
+  .glass-card:focus-within {
+    outline: none;
+    box-shadow: 0 6px 30px var(--ring);
+    border-color: rgba(0,229,255,0.20);
+    transform: translateY(-3px);
   }
 
   /* Gradient text — cyan → indigo → violet (signature story) */
@@ -212,15 +218,15 @@
 @keyframes gb-pulse {
   0%, 100% {
     box-shadow:
-      0 0 18px  2px rgba(6,   182, 212, 0.28),
+      0 0 18px  2px rgba(0,   229, 255, 0.28),
       0 0 48px  6px rgba(99,  102, 241, 0.18),
-      0 0 90px 12px rgba(167, 139, 250, 0.10);
+      0 0 90px 12px rgba(157,  78, 221, 0.10);
   }
   50% {
     box-shadow:
-      0 0 28px  4px rgba(6,   182, 212, 0.48),
+      0 0 28px  4px rgba(0,   229, 255, 0.48),
       0 0 64px 10px rgba(99,  102, 241, 0.28),
-      0 0 120px 20px rgba(167, 139, 250, 0.16);
+      0 0 120px 20px rgba(157,  78, 221, 0.16);
   }
 }
 
@@ -230,10 +236,10 @@
     gb-pulse 4s ease-in-out infinite;
   background: conic-gradient(
     from var(--gb-angle),
-    rgba(6,   182, 212, 0.95)  0deg,
+    rgba(0,   229, 255, 0.95)  0deg,
     rgba(99,  102, 241, 0.90)  120deg,
-    rgba(167, 139, 250, 0.95)  240deg,
-    rgba(6,   182, 212, 0.95)  360deg
+    rgba(157,  78, 221, 0.95)  240deg,
+    rgba(0,   229, 255, 0.95)  360deg
   );
 }
 
@@ -246,9 +252,9 @@
 :root:not(.dark) .gradient-border-animated {
   background: conic-gradient(
     from var(--gb-angle),
-    rgba(8,   145, 178, 0.95)  0deg,
+    rgba(0,   145, 178, 0.95)  0deg,
     rgba(79,  70,  229, 0.90)  120deg,
     rgba(124,  58, 237, 0.95)  240deg,
-    rgba(8,   145, 178, 0.95)  360deg
+    rgba(0,   145, 178, 0.95)  360deg
   );
 }

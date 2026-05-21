@@ -2,52 +2,32 @@ import type { SkillGroup } from "@/types/skill"
 
 export const skillGroups: SkillGroup[] = [
   {
-    category: "Frontend",
+    category: "Core Stack & Ecosystem",
     skills: [
       "React",
       "Next.js",
       "TypeScript",
       "JavaScript",
       "TailwindCSS",
-      "Material UI",
-      "Redux",
-      "Recoil",
-      "Styled Components",
-      "HTML5",
-      "CSS3",
-    ],
-  },
-  {
-    category: "Backend",
-    skills: [
       "Node.js",
-      "FastAPI",
-      "Python",
-      "Express.js",
-      "Django",
-      "Django REST Framework",
+      "PostgreSQL",
+      "Git",
+      "Design Systems",
+      "Testing (Jest/Vitest)",
     ],
   },
   {
-    category: "Databases",
-    skills: ["PostgreSQL", "MongoDB"],
+    category: "Exploring / Future Vectors",
+    skills: ["Svelte", "Go", "Rust", "Data Science", "ML Workflows", "vLLM"],
   },
   {
-    category: "Testing & Quality",
-    skills: ["Jest", "Vitest", "Pytest"],
-  },
-  {
-    category: "DevOps",
-    skills: ["Docker", "GitHub Actions", "Azure DevOps", "CI/CD", "GCP"],
-  },
-  {
-    category: "Practices",
+    category: "Practices & Delivery",
     skills: [
-      "Agile",
-      "Git",
-      "Test Driven Development",
-      "GitHub Flow",
       "System Design",
+      "CI/CD",
+      "Observability",
+      "Cross-team Delivery",
+      "Product Strategy",
     ],
   },
 ]
