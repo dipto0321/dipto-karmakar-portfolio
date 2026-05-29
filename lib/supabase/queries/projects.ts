@@ -1,7 +1,7 @@
-import { projects as staticProjects } from "@/content/projects"
-import { supabase } from "@/lib/supabase/client"
+import { createClient } from "@/lib/supabase/server"
 import type { DbProject } from "@/lib/supabase/types"
 import type { Project } from "@/types/project"
+import { cookies } from "next/headers"
 
 function toProject(row: DbProject): Project {
   return {
@@ -17,47 +17,63 @@ function toProject(row: DbProject): Project {
 
 /**
  * Fetch all projects ordered by sort_order.
- * Falls back to static content when Supabase is not configured or returns an error.
+ * Returns an empty array when Supabase is not configured or returns an error.
  */
 export async function getProjects(): Promise<Project[]> {
-  if (!supabase) return staticProjects
+  try {
+    const cookieStore = await cookies()
+    const supabase = createClient(cookieStore)
+    
+    const { data, error } = await supabase
+      .from("projects")
+      .select("*")
+      .order("sort_order", { ascending: true })
 
-  const { data, error } = await supabase
-    .from("projects")
-    .select("*")
-    .order("sort_order", { ascending: true })
+    if (error || !data) {
+      console.error("[supabase/projects] fetch failed:", error)
+      return []
+    }
 
-  if (error || !data) {
-    console.error(
-      "[supabase/projects] fetch failed, using static fallback:",
-      error?.message
-    )
-    return staticProjects
+    console.log(`[supabase/projects] fetched ${data.length} rows`)
+
+    return (data as DbProject[]).map(toProject)
+  } catch (err) {
+    console.error("[supabase/projects] unexpected error:", err)
+    return []
   }
-
-  return data.map(toProject)
 }
 
 /**
  * Fetch only featured projects.
- * Falls back to static content filtered by featured === true.
+ * Returns an empty array when Supabase is not configured or returns an error.
  */
 export async function getFeaturedProjects(): Promise<Project[]> {
-  if (!supabase) return staticProjects.filter((p) => p.featured)
+  try {
+    const cookieStore = await cookies()
+    const supabase = createClient(cookieStore)
+    try {
+      const cookieCount = cookieStore.getAll().length
+      console.log(`[supabase/projects] (featured) cookie count: ${cookieCount}`)
+    } catch (e) {
+      console.log("[supabase/projects] (featured) cookie debug failed")
+    }
 
-  const { data, error } = await supabase
-    .from("projects")
-    .select("*")
-    .eq("featured", true)
-    .order("sort_order", { ascending: true })
+    const { data, error } = await supabase
+      .from("projects")
+      .select("*")
+      .eq("featured", true)
+      .order("sort_order", { ascending: true })
 
-  if (error || !data) {
-    console.error(
-      "[supabase/projects] featured fetch failed, using static fallback:",
-      error?.message
-    )
-    return staticProjects.filter((p) => p.featured)
+    if (error || !data) {
+      console.error("[supabase/projects] featured fetch failed:", error)
+      return []
+    }
+
+    console.log(`[supabase/projects] (featured) fetched ${data.length} rows`)
+
+    return (data as DbProject[]).map(toProject)
+  } catch (err) {
+    console.error("[supabase/projects] unexpected error:", err)
+    return []
   }
-
-  return data.map(toProject)
 }

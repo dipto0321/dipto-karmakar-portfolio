@@ -3,14 +3,12 @@ import { MotionReveal } from "@/components/motion/motion-reveal"
 import { MotionSection } from "@/components/motion/motion-section"
 import { Heading } from "@/components/shared/heading"
 import { ProjectCard } from "@/components/shared/project-card"
-import { projects as localProjects } from "@/content/projects"
 import { getProjects } from "@/lib/supabase/queries/projects"
 
 export async function ProjectsSection() {
   const projects = await getProjects()
-  const allProjects = projects && projects.length > 0 ? projects : localProjects
-  const featured = allProjects.filter((p) => p.featured)
-  const rest = allProjects.filter((p) => !p.featured)
+  const featured = projects.filter((p) => p.featured)
+  const rest = projects.filter((p) => !p.featured)
   const hasProjects = featured.length > 0 || rest.length > 0
 
   return (
