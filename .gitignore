@@ -35,3 +35,8 @@ pnpm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 session-*.md
+
+# internal working docs — local reference only, not for the public portfolio repo
+docs/personality.md
+docs/*.pdf
+docs/planning/
