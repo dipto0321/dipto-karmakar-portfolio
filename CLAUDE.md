@@ -18,8 +18,9 @@ idea-driven engineer. Live target: `https://diptokarmakar.me`.
 - **Tailwind v4** — CSS-first config in `app/globals.css` (no `tailwind.config.js`); design
   tokens are CSS variables exposed via `@theme inline`
 - **shadcn** primitives + **framer-motion 12** for motion
-- **next-themes** (dark-first) · **Supabase** (`@supabase/ssr`) as an optional projects CMS
-  — under review; may be replaced by static content (see code review)
+- **next-themes** (dark-first) · **Supabase** (`@supabase/ssr`) — the **CMS / single source
+  of truth** for managed content (projects, and likely more). Static `content/*.ts` is for
+  fixed site copy/config only, not for Supabase-managed data (no dual source of truth).
 
 ## Commands (pnpm)
 
@@ -47,8 +48,12 @@ Always run `pnpm typecheck` and `pnpm lint` before considering a change done.
 - **Style:** Prettier, **no semicolons**, double quotes (match existing files). Run `pnpm format`.
 - **Data/content separation:** components render; `content/*.ts` holds the data. Keep it that way.
 - **Path alias `@/`** maps to repo root (see `tsconfig.json`).
-- **Middleware:** `proxy.ts` at root is Next 16's renamed middleware (only present to serve
-  Supabase auth — slated for removal if Supabase is dropped).
+- **Supabase access:** content is managed **directly in the Supabase dashboard/SQL** (no
+  in-app admin UI). The site is therefore **read-only + anon**: reads go through a single
+  stateless anon client (publishable/anon key) against tables with **RLS public-select**
+  policies. No auth, no cookies, no session refresh.
+- **Middleware:** `proxy.ts` (Next 16's renamed middleware) only existed for Supabase auth
+  session refresh — **remove it**; there is no auth.
 
 ## Design system
 
@@ -61,8 +66,34 @@ Always run `pnpm typecheck` and `pnpm lint` before considering a change done.
 
 ## Working norms
 
-- Branch work off `dev`; `main` is the deployable branch.
+- Git workflow: **GitHub Flow** — see "Git & GitHub Workflow Rules" below. No `dev` branch; branch off `main`.
 - Don't commit/push unless asked. End commit messages with the Co-Authored-By trailer.
 - Internal planning/working docs live in `docs/planning/` and are gitignored — keep internal
   strategy/TODO/review content out of the public repo.
-- Prefer static, typed content and zero-infra solutions for single-author portfolio data.
+- Managed content (projects, etc.) lives in Supabase, edited in the dashboard; static
+  `content/*.ts` is for fixed site copy/config only.
+
+## Git & GitHub Workflow Rules
+
+This project uses **GitHub Flow**. There is no `dev` branch. `main` is always deployable.
+
+### Branching
+
+- Cut every branch directly from `main`
+- Branch naming: `feat/<short-description>`, `fix/<short-description>`, `chore/<short-description>`, `refactor/<short-description>`, `docs/<short-description>`
+- Keep branches short-lived — merge within days, not weeks
+- Delete the branch immediately after merging
+
+### Pull Requests
+
+- Open a PR to merge into `main` — never push directly to `main` for features
+- PR title should follow conventional commit format: `feat(expenses): add pagination`
+
+### Commits
+
+- Use Conventional Commits: `type(scope): summary`
+- Keep the subject short, imperative, and lowercase unless the proper noun needs capitals
+- Use a body with bullet points when the change spans multiple files or has important context
+- Commit reproducible project files together when they belong to the same change (e.g. `package.json` and `pnpm-lock.yaml`)
+- Do not commit local-only editor or environment files unless the change is intentionally shared
+- Prefer focused commits — one logical change per commit
