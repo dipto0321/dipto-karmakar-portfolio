@@ -1,133 +1,101 @@
-import Image from "next/image"
+import { ArrowUpRight, FileText, Mail } from "lucide-react"
 
-import { Section } from "@/components/layout/section"
-import { AnimatedWrapper } from "@/components/shared/animated-wrapper"
-import { GradientBorder } from "@/components/shared/gradient-border"
-import { SkillBadge } from "@/components/shared/skill-badge"
-import { Card, CardContent } from "@/components/ui/card"
+import { InteractiveGrid } from "@/components/shared/interactive-grid"
+import { GithubIcon } from "@/components/shared/social-icons"
+import { TerminalStatus } from "@/components/shared/terminal-status"
 import { siteConfig } from "@/content/site"
-import { HeroActions } from "@/features/hero/hero-actions"
+
+function StatusChip() {
+  return (
+    <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1.5 font-mono text-xs text-muted-foreground backdrop-blur">
+      <span className="relative flex h-2 w-2">
+        <span className="animate-pulse-soft absolute inline-flex h-full w-full rounded-full bg-accent-cyan" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan" />
+      </span>
+      <span className="text-foreground/80">{siteConfig.availability}</span>
+    </div>
+  )
+}
 
 export function HeroSection() {
   return (
-    <Section
-      className="relative overflow-hidden pt-6 sm:pt-8 lg:pt-10"
-      containerClassName="space-y-12"
-    >
-      <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:gap-12">
-        <AnimatedWrapper className="space-y-10">
-          <div className="space-y-7">
-            {/* Eyebrow */}
-            <p className="font-mono text-xs tracking-[0.3em] text-primary uppercase">
-              Senior Software Engineer
+    <section className="relative overflow-hidden">
+      <div className="bg-dot-grid pointer-events-none absolute inset-0 opacity-60" />
+      <InteractiveGrid />
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[820px] -translate-x-1/2 rounded-full bg-accent-cyan/10 blur-3xl" />
+
+      <div className="relative mx-auto max-w-6xl px-6 pt-28 pb-20 md:pt-36 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-8">
+            <div className="animate-rise-in">
+              <p className="font-mono text-xs tracking-widest text-muted-foreground">
+                {"// dipto karmakar"}
+              </p>
+              <div className="mt-6">
+                <StatusChip />
+              </div>
+            </div>
+
+            <h1
+              className="animate-rise-in mt-8 font-heading text-5xl font-semibold tracking-tight text-balance text-foreground sm:text-6xl md:text-7xl"
+              style={{ animationDelay: "80ms" }}
+            >
+              {siteConfig.name}
+            </h1>
+
+            <p
+              className="animate-rise-in mt-4 font-mono text-sm tracking-wide text-accent-cyan"
+              style={{ animationDelay: "140ms" }}
+            >
+              {siteConfig.title}
             </p>
 
-            {/* Avatar + name/title */}
-            <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-6">
-              <div className="gradient-border-animated w-fit shrink-0 rounded-2xl p-px">
-                <div className="relative h-36 w-36 overflow-hidden rounded-xl sm:h-44 sm:w-44">
-                  <Image
-                    src={siteConfig.avatarPath}
-                    alt={siteConfig.name}
-                    fill
-                    sizes="(min-width: 640px) 176px, 144px"
-                    className="object-cover object-top"
-                    priority
-                  />
-                </div>
-              </div>
-              <div className="sm:pb-2">
-                <h1 className="text-4xl leading-tight font-semibold tracking-tight sm:text-4xl lg:text-6xl">
-                  {siteConfig.name}
-                </h1>
-                <p className="mt-2 text-lg text-muted-foreground sm:text-xl lg:text-2xl">
-                  {siteConfig.title}
-                </p>
-                <h2 className="gradient-text mt-4 max-w-2xl text-2xl leading-tight font-semibold sm:text-3xl lg:text-3xl">
-                  I build scalable frontend architecture at the intersection of
-                  systems thinking, AI-assisted workflows, and product strategy.
-                </h2>
-              </div>
-            </div>
+            <p
+              className="animate-rise-in mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted-foreground"
+              style={{ animationDelay: "200ms" }}
+            >
+              {siteConfig.headline}
+            </p>
 
-            {/* Overview */}
-            <div className="space-y-4">
-              {siteConfig.overview.map((paragraph) => (
-                <p
-                  key={paragraph}
-                  className="max-w-xl text-base leading-8 text-balance text-muted-foreground sm:text-lg"
-                >
-                  {paragraph}
-                </p>
-              ))}
+            <div
+              className="animate-rise-in mt-9 flex flex-wrap items-center gap-3"
+              style={{ animationDelay: "260ms" }}
+            >
+              <a
+                href={siteConfig.resumePath}
+                className="group inline-flex items-center gap-2 rounded-md bg-accent-cyan px-4 py-2.5 text-sm font-medium text-accent-cyan-foreground transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                <FileText className="h-4 w-4" />
+                Résumé
+              </a>
+              <a
+                href={siteConfig.contact.email}
+                className="group inline-flex items-center gap-2 rounded-md border border-border bg-card/40 px-4 py-2.5 text-sm font-medium text-foreground/90 transition-colors duration-200 hover:border-accent-cyan/40 hover:text-foreground"
+              >
+                <Mail className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-accent-cyan" />
+                Email
+              </a>
+              <a
+                href={siteConfig.contact.github}
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-2 rounded-md border border-border bg-card/40 px-4 py-2.5 text-sm font-medium text-foreground/90 transition-colors duration-200 hover:border-accent-cyan/40 hover:text-foreground"
+              >
+                <GithubIcon className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-accent-cyan" />
+                GitHub
+                <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+              </a>
             </div>
           </div>
 
-          {/* CTA + social icons */}
-          <HeroActions />
-
-          {/* Scroll indicator */}
-          <div className="flex items-center gap-3 pt-2">
-            <div className="flex h-9 w-5 items-start justify-center rounded-full border-2 border-border/60 p-1">
-              <div className="h-1.5 w-1 animate-bounce rounded-full bg-primary/70" />
-            </div>
-            <span className="font-mono text-xs tracking-widest text-muted-foreground/60 uppercase">
-              Scroll to explore
-            </span>
+          <div
+            className="animate-rise-in flex items-start lg:col-span-4 lg:justify-end"
+            style={{ animationDelay: "320ms" }}
+          >
+            <TerminalStatus />
           </div>
-        </AnimatedWrapper>
-
-        <AnimatedWrapper
-          transition={{ duration: 0.5, delay: 0.08, ease: "easeOut" }}
-        >
-          <GradientBorder>
-            <Card className="rounded-[calc(var(--radius-3xl)-1px)] border-0 bg-card">
-              <CardContent className="space-y-8">
-                {/* Focus areas */}
-                <div className="space-y-3">
-                  <p className="font-mono text-xs tracking-[0.3em] text-primary uppercase">
-                    Focus Areas
-                  </p>
-                  <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                    Systems thinking for product teams shipping at scale.
-                  </h2>
-                  <p className="leading-7 text-muted-foreground">
-                    Strong frontend architecture, fast execution, and pragmatic
-                    collaboration across design, product, and engineering.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-3">
-                  {siteConfig.specializations.map((specialization) => (
-                    <SkillBadge
-                      key={specialization}
-                      label={specialization}
-                      className="bg-background/70 text-foreground"
-                    />
-                  ))}
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-border/70 bg-background/60 p-5">
-                    <p className="text-sm text-muted-foreground">Core stack</p>
-                    <p className="mt-2 text-lg font-medium text-foreground">
-                      React, Next.js, TypeScript, Node.js
-                    </p>
-                  </div>
-                  <div className="rounded-2xl border border-border/70 bg-background/60 p-5">
-                    <p className="text-sm text-muted-foreground">
-                      Delivery style
-                    </p>
-                    <p className="mt-2 text-lg font-medium text-foreground">
-                      Clean systems, measurable impact, low-noise execution
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </GradientBorder>
-        </AnimatedWrapper>
+        </div>
       </div>
-    </Section>
+    </section>
   )
 }

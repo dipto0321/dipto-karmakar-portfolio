@@ -1,5 +1,6 @@
 export interface ImpactStat {
   value: string
   label: string
-  description: string
+  /** Short mono caption shown under the stat. */
+  detail: string
 }

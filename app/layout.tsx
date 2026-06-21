@@ -1,10 +1,7 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 
-import { SiteFooter } from "@/components/layout/site-footer"
 import { SiteHeader } from "@/components/layout/site-header"
-import { ThemeProvider } from "@/components/layout/theme-provider"
-import { ScrollProgress } from "@/components/motion/scroll-progress"
 import { siteConfig } from "@/content/site"
 import { cn } from "@/lib/utils"
 import "./globals.css"
@@ -43,7 +40,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.title}`,
     description: siteConfig.description,
-    creator: "@diptokarmakar",
   },
   robots: {
     index: true,
@@ -55,6 +51,11 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#08090b",
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -63,15 +64,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning
-      className={cn(
-        "antialiased",
-        fontMono.variable,
-        "font-sans",
-        fontSans.variable
-      )}
+      className={cn("dark antialiased", fontSans.variable, fontMono.variable)}
     >
-      <body className="min-h-screen overflow-x-hidden bg-background text-foreground">
+      <body className="min-h-screen overflow-x-hidden bg-background font-sans text-foreground">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -90,12 +85,8 @@ export default function RootLayout({
             }),
           }}
         />
-        <ThemeProvider>
-          <ScrollProgress />
-          <SiteHeader />
-          {children}
-          <SiteFooter />
-        </ThemeProvider>
+        <SiteHeader />
+        {children}
       </body>
     </html>
   )
