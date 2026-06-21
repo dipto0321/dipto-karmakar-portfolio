@@ -88,6 +88,9 @@ This project uses **GitHub Flow**. There is no `dev` branch. `main` is always de
 
 - Open a PR to merge into `main` — never push directly to `main` for features
 - PR title should follow conventional commit format: `feat(expenses): add pagination`
+- PR will be reviewed by at least one other person (Dipto or a trusted collaborator) before merging
+- PR description should explain the "why" and "what" of the change, especially if it spans multiple files or has important context
+- If the PR includes changes to project files (e.g. `package.json`), commit those changes together with the related code changes in the same PR
 
 ### Commits
 

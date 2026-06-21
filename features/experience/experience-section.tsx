@@ -1,43 +1,115 @@
-import { Section } from "@/components/layout/section"
-import { MotionReveal } from "@/components/motion/motion-reveal"
-import { MotionSection } from "@/components/motion/motion-section"
-import { Heading } from "@/components/shared/heading"
-import { TimelineItem } from "@/components/shared/timeline-item"
+import { Briefcase } from "lucide-react"
+import Image from "next/image"
+
+import { Reveal } from "@/components/shared/reveal"
+import { about } from "@/content/about"
 import { experiences } from "@/content/experience"
+import { siteConfig } from "@/content/site"
+import type { ExperienceItem } from "@/types/experience"
+
+const timeline = experiences.slice(0, 4)
+
+function RoleRow({ role, delay }: { role: ExperienceItem; delay: number }) {
+  return (
+    <Reveal as="li" delay={delay} className="relative pb-10 pl-8 last:pb-0">
+      <span className="absolute top-1.5 left-0 h-2.5 w-2.5 rounded-full border border-accent-cyan bg-background ring-4 ring-background" />
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h3 className="font-heading text-lg font-semibold tracking-tight text-foreground">
+          {role.role}
+          <span className="text-muted-foreground"> · {role.company}</span>
+        </h3>
+        <span className="font-mono text-xs text-muted-foreground tabular-nums">
+          {role.period}
+        </span>
+      </div>
+      <p className="mt-2 max-w-xl text-sm leading-relaxed text-pretty text-muted-foreground">
+        {role.impact[0]}
+      </p>
+      <ul className="mt-3 flex flex-wrap gap-1.5">
+        {role.technologies.map((tag) => (
+          <li
+            key={tag}
+            className="rounded border border-border bg-secondary/60 px-2 py-0.5 font-mono text-[11px] text-muted-foreground"
+          >
+            {tag}
+          </li>
+        ))}
+      </ul>
+    </Reveal>
+  )
+}
 
 export function ExperienceSection() {
   return (
-    <Section id="experience" className="border-t border-border/40">
-      <MotionSection>
-        <MotionReveal stagger>
-          <MotionReveal>
-            <Heading
-              eyebrow="Career timeline"
-              title="Where I have built and grown"
-              description="10+ years of progressive engineering responsibility — from shipping features to leading architecture decisions and growing teams."
-            />
-          </MotionReveal>
+    <section
+      id="about"
+      className="relative scroll-mt-20 border-t border-border"
+    >
+      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 lg:px-8">
+        <p className="font-mono text-xs tracking-widest text-muted-foreground">
+          {"// about"}
+        </p>
+        <div className="mt-6 grid gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Narrative + capabilities */}
+          <div className="lg:col-span-5">
+            <div className="group mb-8 flex items-center gap-4">
+              <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border border-border ring-1 ring-accent-cyan/20">
+                <Image
+                  src={siteConfig.avatarPath}
+                  alt={`Portrait of ${siteConfig.name}`}
+                  fill
+                  sizes="80px"
+                  className="object-cover object-top grayscale transition-all duration-500 group-hover:grayscale-0"
+                />
+                <span className="pointer-events-none absolute inset-0 bg-accent-cyan/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              </div>
+              <div className="font-mono text-xs leading-relaxed text-muted-foreground">
+                <p className="text-foreground/90">{siteConfig.name}</p>
+                <p>
+                  {siteConfig.locationShort} · {siteConfig.timezone}
+                </p>
+                <p className="text-accent-cyan">10+ yrs shipping</p>
+              </div>
+            </div>
+            <h2 className="font-heading text-3xl leading-tight font-semibold tracking-tight text-balance text-foreground md:text-4xl">
+              {about.heading}
+            </h2>
+            <p className="mt-5 text-sm leading-relaxed text-pretty text-muted-foreground md:text-base">
+              {about.body}
+            </p>
 
-          <div className="relative mt-14">
-            {/* Vertical line */}
-            <div className="absolute top-2 bottom-2 left-[0.34rem] hidden w-px bg-border/60 md:left-56 md:block" />
-
-            <div className="space-y-10">
-              {experiences.map((exp) => (
-                <MotionReveal key={exp.id}>
-                  <TimelineItem
-                    period={exp.period}
-                    role={exp.role}
-                    company={exp.company}
-                    impact={exp.impact}
-                    technologies={exp.technologies}
-                  />
-                </MotionReveal>
+            <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border">
+              {about.capabilities.map((cap) => (
+                <div key={cap.label} className="bg-card p-4">
+                  <p className="font-mono text-[11px] tracking-widest text-accent-cyan uppercase">
+                    {cap.label}
+                  </p>
+                  <ul className="mt-2 space-y-1">
+                    {cap.items.map((item) => (
+                      <li key={item} className="text-sm text-muted-foreground">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
             </div>
           </div>
-        </MotionReveal>
-      </MotionSection>
-    </Section>
+
+          {/* Experience timeline */}
+          <div className="lg:col-span-7">
+            <div className="mb-8 flex items-center gap-2 font-mono text-xs tracking-widest text-muted-foreground">
+              <Briefcase className="h-3.5 w-3.5 text-accent-cyan" />
+              experience
+            </div>
+            <ol className="relative border-l border-border pl-0">
+              {timeline.map((role, i) => (
+                <RoleRow key={role.id} role={role} delay={i * 80} />
+              ))}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
