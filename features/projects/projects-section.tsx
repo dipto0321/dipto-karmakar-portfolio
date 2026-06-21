@@ -44,12 +44,7 @@ function ProjectRow({ project, index }: { project: Project; index: string }) {
         </ul>
       </div>
 
-      <div className="flex items-start justify-end gap-2 font-mono text-xs text-muted-foreground md:col-span-2 md:flex-col md:items-end md:gap-1 md:text-right">
-        {project.featured && <span className="text-accent-cyan">featured</span>}
-        {project.aiAssisted && (
-          <span className="text-foreground/70">ai-assisted</span>
-        )}
-      </div>
+      <div className="md:col-span-2" />
     </div>
   )
 

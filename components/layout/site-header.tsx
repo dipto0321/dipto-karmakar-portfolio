@@ -45,7 +45,7 @@ export function SiteHeader() {
             <span className="animate-pulse-soft absolute inline-flex h-full w-full rounded-full bg-accent-cyan" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan" />
           </span>
-          dipto<span className="text-muted-foreground">.me</span>
+          <span className="text-accent-cyan">~/</span>Dipto
         </a>
 
         <div className="hidden items-center gap-1 sm:flex">

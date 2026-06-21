@@ -22,7 +22,7 @@ export function HeroSection() {
     <section className="relative overflow-hidden">
       <div className="bg-dot-grid pointer-events-none absolute inset-0 opacity-60" />
       <InteractiveGrid />
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[820px] -translate-x-1/2 rounded-full bg-accent-cyan/10 blur-3xl" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-120 w-205 -translate-x-1/2 rounded-full bg-accent-cyan/10 blur-3xl" />
 
       <div className="relative mx-auto max-w-6xl px-6 pt-28 pb-20 md:pt-36 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
@@ -63,10 +63,12 @@ export function HeroSection() {
             >
               <a
                 href={siteConfig.resumePath}
+                target="_blank"
+                rel="noreferrer"
                 className="group inline-flex items-center gap-2 rounded-md bg-accent-cyan px-4 py-2.5 text-sm font-medium text-accent-cyan-foreground transition-transform duration-200 hover:-translate-y-0.5"
               >
                 <FileText className="h-4 w-4" />
-                Résumé
+                Resume
               </a>
               <a
                 href={siteConfig.contact.email}

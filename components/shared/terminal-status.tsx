@@ -17,10 +17,10 @@ const lines: Line[] = [
     render: <span>whoami</span>,
   },
   {
-    text: "dipto.karmakar — senior software engineer",
+    text: "Dipto Karmakar — senior software engineer",
     render: (
       <span className="text-foreground/90">
-        dipto.karmakar — senior software engineer
+        Dipto Karmakar — senior software engineer
       </span>
     ),
   },
@@ -30,12 +30,12 @@ const lines: Line[] = [
     render: <span>cat status.json</span>,
   },
   {
-    text: '{ focus: "full-stack + AI", open: true }',
+    text: '{ focus: "frontend + full-stack", open: true }',
     render: (
       <span className="text-foreground/90">
         {"{ "}
         <span className="text-muted-foreground">focus:</span>{" "}
-        {'"full-stack + AI"'},{" "}
+        {'"frontend + full-stack"'},{" "}
         <span className="text-muted-foreground">open:</span>{" "}
         <span className="text-accent-cyan">true</span>
         {" }"}
