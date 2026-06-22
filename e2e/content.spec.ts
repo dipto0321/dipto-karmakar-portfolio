@@ -6,8 +6,8 @@ test.describe("cms content", () => {
   })
 
   test("no section shows the CMS error fallback", async ({ page }) => {
-    // If any section fails to load, SectionError renders "Unable to load content"
-    await expect(page.getByText("Unable to load content")).not.toBeVisible()
+    // toHaveCount(0) avoids strict-mode violation when multiple sections are checked
+    await expect(page.getByText("Unable to load content")).toHaveCount(0)
   })
 
   test("hero renders correct name and title from CMS", async ({ page }) => {
