@@ -39,7 +39,7 @@ export const siteConfig: SiteConfig = {
     "React + TypeScript architecture",
     "Real-time payment and dashboard interfaces",
     "Design system implementation",
-    "Full-stack delivery (Node, FastAPI, PostgreSQL)",
+    "Full-stack capability (Node, FastAPI, PostgreSQL)",
   ],
   resumePath: "/dipto-karmakar-resume.pdf",
   avatarPath: "/avatar.jpg",
