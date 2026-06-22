@@ -103,8 +103,8 @@ export function ContactSection() {
 
             <div className="mt-4 flex items-center gap-2 px-1 font-mono text-xs text-muted-foreground">
               <MapPin className="h-3.5 w-3.5 text-accent-cyan" />
-              {siteConfig.locationShort} · {siteConfig.timezone} · remote ·
-              open to relocation
+              {siteConfig.locationShort} · {siteConfig.timezone} · remote · open
+              to relocation
             </div>
           </Reveal>
         </div>
@@ -116,7 +116,8 @@ export function ContactSection() {
             © {new Date().getFullYear()} {siteConfig.name}
           </p>
           <p className="font-mono text-xs text-muted-foreground">
-            Next.js + TypeScript · Supabase · Designed with v0 · Pair-programmed with Claude
+            Next.js + TypeScript · Supabase · Designed with v0 · Pair-programmed
+            with Claude
           </p>
         </div>
       </div>
