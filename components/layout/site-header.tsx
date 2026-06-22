@@ -35,7 +35,10 @@ export function SiteHeader() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
+      <nav
+        aria-label="Primary navigation"
+        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8"
+      >
         <a
           href="#top"
           onClick={() => setOpen(false)}
@@ -84,6 +87,7 @@ export function SiteHeader() {
 
       <div
         id="mobile-menu"
+        aria-hidden={!open}
         className={`overflow-hidden border-t border-border bg-background/95 backdrop-blur-md transition-[max-height] duration-300 ease-out sm:hidden ${
           open ? "max-h-80" : "max-h-0 border-t-transparent"
         }`}

@@ -6,7 +6,10 @@ export async function ImpactSection() {
   const { data: stats, error } = await getImpactStats()
 
   return (
-    <section className="relative border-y border-border bg-card/30">
+    <section
+      aria-label="Impact statistics"
+      className="relative border-y border-border bg-card/30"
+    >
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         {error || !stats ? (
           <div className="py-8">

@@ -65,6 +65,7 @@ export async function ExperienceSection() {
   return (
     <section
       id="about"
+      aria-label="About and experience"
       className="relative scroll-mt-20 border-t border-border"
     >
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28 lg:px-8">
