@@ -136,11 +136,20 @@ export async function ExperienceSection() {
 
             {/* Experience timeline */}
             <div className="lg:col-span-7">
-              <div className="mb-8 flex items-center gap-2 font-mono text-xs tracking-widest text-muted-foreground">
-                <Briefcase className="h-3.5 w-3.5 text-accent-cyan" />
+              <h3
+                id="experience-heading"
+                className="mb-8 flex items-center gap-2 font-mono text-xs tracking-widest text-muted-foreground"
+              >
+                <Briefcase
+                  className="h-3.5 w-3.5 text-accent-cyan"
+                  aria-hidden="true"
+                />
                 experience
-              </div>
-              <ol className="relative border-l border-border pl-0">
+              </h3>
+              <ol
+                aria-labelledby="experience-heading"
+                className="relative border-l border-border pl-0"
+              >
                 {experiences.map((role, i) => (
                   <RoleRow key={role.id} role={role} delay={i * 80} />
                 ))}

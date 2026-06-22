@@ -21,7 +21,9 @@ export async function getProjects(): Promise<QueryResult<Project[]>> {
 
   const { data, error } = await supabase
     .from("projects")
-    .select("*")
+    .select(
+      "id, title, description, tech_stack, architecture_highlights, links, featured, sort_order"
+    )
     .order("sort_order", { ascending: true })
 
   if (error || !data) {

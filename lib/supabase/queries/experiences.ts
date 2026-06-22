@@ -24,7 +24,9 @@ export async function getExperiences(): Promise<QueryResult<ExperienceItem[]>> {
 
   const { data, error } = await supabase
     .from("experiences")
-    .select("*")
+    .select(
+      "id, role, company, period, location, is_current, contract_type, work_mode, impact, technologies, sort_order"
+    )
     .order("sort_order", { ascending: true })
 
   if (error || !data || data.length === 0) {

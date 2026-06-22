@@ -17,7 +17,7 @@ export async function getAboutContent(): Promise<QueryResult<About>> {
 
   const { data, error } = await supabase
     .from("about_content")
-    .select("*")
+    .select("heading, body, capabilities")
     .eq("id", 1)
     .single()
 

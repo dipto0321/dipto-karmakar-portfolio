@@ -17,7 +17,7 @@ export async function getImpactStats(): Promise<QueryResult<ImpactStat[]>> {
 
   const { data, error } = await supabase
     .from("impact_stats")
-    .select("*")
+    .select("id, value, label, detail, sort_order")
     .order("sort_order", { ascending: true })
 
   if (error || !data || data.length === 0) {
