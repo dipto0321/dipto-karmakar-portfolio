@@ -73,16 +73,24 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Person",
-              name: siteConfig.name,
-              jobTitle: siteConfig.title,
-              url: siteConfig.siteUrl,
-              email: siteConfig.contact.email.replace("mailto:", ""),
-              telephone: siteConfig.contact.phone,
-              address: siteConfig.location,
-              description: siteConfig.summary,
-              sameAs: [siteConfig.contact.linkedin, siteConfig.contact.github],
-              knowsAbout: siteConfig.keywords,
+              "@type": "ProfilePage",
+              dateModified: new Date().toISOString(),
+              mainEntity: {
+                "@type": "Person",
+                "@id": `${siteConfig.siteUrl}/#person`,
+                name: siteConfig.name,
+                jobTitle: siteConfig.title,
+                url: siteConfig.siteUrl,
+                email: siteConfig.contact.email.replace("mailto:", ""),
+                telephone: siteConfig.contact.phone,
+                address: siteConfig.location,
+                description: siteConfig.summary,
+                sameAs: [
+                  siteConfig.contact.linkedin,
+                  siteConfig.contact.github,
+                ],
+                knowsAbout: siteConfig.keywords,
+              },
             }),
           }}
         />
