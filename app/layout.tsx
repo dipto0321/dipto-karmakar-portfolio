@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { SiteHeader } from "@/components/layout/site-header"
 import { siteConfig } from "@/content/site"
@@ -93,6 +94,7 @@ export default function RootLayout({
         </a>
         <SiteHeader />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   )
