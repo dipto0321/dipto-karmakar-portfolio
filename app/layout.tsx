@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { SiteHeader } from "@/components/layout/site-header"
 import { siteConfig } from "@/content/site"
@@ -85,8 +86,15 @@ export default function RootLayout({
             }),
           }}
         />
+        <a
+          href="#top"
+          className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-200 focus-visible:rounded-md focus-visible:bg-background focus-visible:px-4 focus-visible:py-2 focus-visible:font-mono focus-visible:text-sm focus-visible:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+        >
+          Skip to main content
+        </a>
         <SiteHeader />
         {children}
+        <SpeedInsights />
       </body>
     </html>
   )

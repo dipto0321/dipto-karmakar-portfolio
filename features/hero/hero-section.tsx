@@ -23,7 +23,7 @@ export async function HeroSection() {
   const { data: hero, error } = await getHeroContent()
 
   return (
-    <section className="relative overflow-hidden">
+    <section aria-label="Introduction" className="relative overflow-hidden">
       <div className="bg-dot-grid pointer-events-none absolute inset-0 opacity-60" />
       <InteractiveGrid />
       <div className="pointer-events-none absolute -top-40 left-1/2 h-120 w-205 -translate-x-1/2 rounded-full bg-accent-cyan/10 blur-3xl" />
@@ -72,27 +72,38 @@ export async function HeroSection() {
                   href={siteConfig.resumePath}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="View resume (opens in new tab)"
                   className="group inline-flex items-center gap-2 rounded-md bg-accent-cyan px-4 py-2.5 text-sm font-medium text-accent-cyan-foreground transition-transform duration-200 hover:-translate-y-0.5"
                 >
-                  <FileText className="h-4 w-4" />
+                  <FileText className="h-4 w-4" aria-hidden="true" />
                   Resume
                 </a>
                 <a
                   href={siteConfig.contact.email}
                   className="group inline-flex items-center gap-2 rounded-md border border-border bg-card/40 px-4 py-2.5 text-sm font-medium text-foreground/90 transition-colors duration-200 hover:border-accent-cyan/40 hover:text-foreground"
                 >
-                  <Mail className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-accent-cyan" />
+                  <Mail
+                    className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-accent-cyan"
+                    aria-hidden="true"
+                  />
                   Email
                 </a>
                 <a
                   href={siteConfig.contact.github}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label="GitHub profile (opens in new tab)"
                   className="group inline-flex items-center gap-2 rounded-md border border-border bg-card/40 px-4 py-2.5 text-sm font-medium text-foreground/90 transition-colors duration-200 hover:border-accent-cyan/40 hover:text-foreground"
                 >
-                  <GithubIcon className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-accent-cyan" />
+                  <GithubIcon
+                    className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-accent-cyan"
+                    aria-hidden="true"
+                  />
                   GitHub
-                  <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
+                  <ArrowUpRight
+                    className="h-3.5 w-3.5 text-muted-foreground"
+                    aria-hidden="true"
+                  />
                 </a>
               </div>
             </div>

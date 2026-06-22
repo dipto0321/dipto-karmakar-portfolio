@@ -58,6 +58,7 @@ function ProjectRow({
         href={href}
         target="_blank"
         rel="noreferrer"
+        aria-label={`${project.title} (opens in new tab)`}
         className="group relative block border-t border-l-2 border-border border-l-transparent py-8 transition-colors hover:border-l-accent-cyan/60 hover:bg-card/40 md:py-10"
       >
         {inner}
@@ -78,6 +79,7 @@ export async function ProjectsSection() {
   return (
     <section
       id="work"
+      aria-label="Selected work"
       className="relative mx-auto max-w-6xl scroll-mt-20 px-6 py-20 md:py-28 lg:px-8"
     >
       <div className="flex items-end justify-between gap-4">

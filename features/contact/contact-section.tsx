@@ -33,6 +33,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
+      aria-label="Contact"
       className="bg-dot-grid relative border-t border-border"
     >
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-32 lg:px-8">
@@ -84,6 +85,7 @@ export function ContactSection() {
                     href={c.href}
                     target={c.href.startsWith("http") ? "_blank" : undefined}
                     rel={c.href.startsWith("http") ? "noreferrer" : undefined}
+                    aria-label={`${c.label}${c.href.startsWith("http") ? " (opens in new tab)" : ""}`}
                     className="group flex items-center gap-4 bg-card px-5 py-4 transition-colors hover:bg-secondary/60"
                   >
                     <c.icon className="h-4 w-4 text-accent-cyan" />
@@ -110,7 +112,7 @@ export function ContactSection() {
         </div>
       </div>
 
-      <div className="border-t border-border">
+      <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-6 sm:flex-row lg:px-8">
           <p className="font-mono text-xs text-muted-foreground">
             © {new Date().getFullYear()} {siteConfig.name}
@@ -120,7 +122,7 @@ export function ContactSection() {
             with Claude
           </p>
         </div>
-      </div>
+      </footer>
     </section>
   )
 }
