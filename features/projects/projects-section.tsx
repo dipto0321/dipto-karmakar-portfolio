@@ -5,7 +5,10 @@ import { Reveal } from "@/components/shared/reveal"
 import { getProjects } from "@/lib/supabase/queries/projects"
 import type { Project } from "@/types/project"
 
-function ProjectRow({ project, index }: Readonly<{ project: Project; index: string }>) {
+function ProjectRow({
+  project,
+  index,
+}: Readonly<{ project: Project; index: string }>) {
   const href = project.links[0]?.url
   const isLink = Boolean(href && href !== "#")
   const metric = project.architectureHighlights[0]
@@ -55,7 +58,7 @@ function ProjectRow({ project, index }: Readonly<{ project: Project; index: stri
         href={href}
         target="_blank"
         rel="noreferrer"
-        className="group relative block border-t border-border border-l-2 border-l-transparent py-8 transition-colors hover:border-l-accent-cyan/60 hover:bg-card/40 md:py-10"
+        className="group relative block border-t border-l-2 border-border border-l-transparent py-8 transition-colors hover:border-l-accent-cyan/60 hover:bg-card/40 md:py-10"
       >
         {inner}
       </a>
@@ -63,7 +66,7 @@ function ProjectRow({ project, index }: Readonly<{ project: Project; index: stri
   }
 
   return (
-    <div className="group relative block border-t border-border border-l-2 border-l-transparent py-8 transition-colors hover:border-l-accent-cyan/60 hover:bg-card/40 md:py-10">
+    <div className="group relative block border-t border-l-2 border-border border-l-transparent py-8 transition-colors hover:border-l-accent-cyan/60 hover:bg-card/40 md:py-10">
       {inner}
     </div>
   )

@@ -50,7 +50,7 @@ export function ExperienceSkeleton() {
           {/* right — experience timeline */}
           <div className="lg:col-span-7">
             <div className="mb-8 h-3 w-20 rounded bg-secondary/60 motion-safe:animate-pulse" />
-            <ol className="relative border-l border-border pl-0 space-y-0">
+            <ol className="relative space-y-0 border-l border-border pl-0">
               {Array.from({ length: 4 }).map((_, i) => (
                 <li key={i} className="relative pb-10 pl-8 last:pb-0">
                   <span className="absolute top-1.5 left-0 h-2.5 w-2.5 rounded-full border border-border bg-secondary/60" />

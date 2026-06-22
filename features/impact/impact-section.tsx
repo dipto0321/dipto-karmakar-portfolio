@@ -23,7 +23,9 @@ export async function ImpactSection() {
                 <p className="font-heading text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
                   {stat.value}
                 </p>
-                <p className="mt-1.5 text-sm text-foreground/80">{stat.label}</p>
+                <p className="mt-1.5 text-sm text-foreground/80">
+                  {stat.label}
+                </p>
                 <p className="mt-3 font-mono text-[11px] tracking-wide text-muted-foreground">
                   {stat.detail}
                 </p>
