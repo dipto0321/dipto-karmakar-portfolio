@@ -1,66 +1,71 @@
 # Dipto Karmakar — Portfolio
 
-Personal portfolio built with Next.js, TypeScript, Tailwind CSS and shadcn/ui.
+Personal portfolio for [diptokarmakar.me](https://diptokarmakar.me) — built with Next.js 16, TypeScript, Tailwind v4, and Supabase as the CMS.
 
-**Quick overview**
-- **Framework**: Next.js 16 (App Router)
-- **UI**: shadcn/ui + Tailwind CSS
-- **Auth / data**: Supabase (client + server helpers in `lib/supabase`)
-- **Language**: TypeScript
+## Performance
 
-**Prerequisites**
-- Node.js 18+ and `pnpm` installed
+[PageSpeed Insights →](https://pagespeed.web.dev/report?url=https%3A%2F%2Fdiptokarmakar.me)
 
-**Local development**
-1. Install dependencies:
+## Stack
+
+| Layer | Technology |
+| --- | --- |
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind v4 — CSS-first config in `app/globals.css` |
+| CMS / data | Supabase — read-only anon client, RLS public-select |
+| UI primitives | shadcn |
+| Fonts | Inter + JetBrains Mono via `next/font` |
+
+## Local development
+
+**Prerequisites:** Node.js ≥ 22 and pnpm
 
 ```bash
 pnpm install
 ```
 
-2. Set environment variables (create a `.env.local`):
+Create `.env.local`:
 
 ```bash
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key
 ```
 
-3. Run the dev server:
-
 ```bash
-pnpm dev
+pnpm dev        # next dev --turbopack
+pnpm build      # production build
+pnpm start      # serve production build
+pnpm typecheck  # tsc --noEmit
+pnpm lint       # eslint
+pnpm format     # prettier --write
 ```
 
-**Build & production**
+## Project structure
 
-```bash
-pnpm build
-pnpm start
+```text
+app/              # routes, layout, metadata, OG image, sitemap, robots
+features/         # page sections — hero, impact, projects, experience, contact
+components/       # layout/, motion/, shared/, ui/ (shadcn)
+content/          # static site config (site.ts) — not for CMS-managed content
+lib/supabase/     # anon client + query functions per table
+types/            # shared TypeScript types
 ```
 
-**Useful scripts**
-- `pnpm dev` : start dev server
-- `pnpm build` : build for production
-- `pnpm start` : run production server
-- `pnpm lint` : run ESLint
-- `pnpm format` : run Prettier
-- `pnpm typecheck` : run TypeScript type-check
+## Environment variables
 
-**Environment variables**
-- `NEXT_PUBLIC_SUPABASE_URL` — Supabase project URL
-- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` — Supabase publishable (anon) key
+| Variable | Description |
+| --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase publishable (anon) key |
 
-**Project structure (high level)**
-- `app/` — Next.js App Router pages and layout
-- `components/` — shared UI components
-- `features/` — feature sections used on the site
-- `lib/supabase` — Supabase client/server helpers and queries
-- `content/` — typed content (projects, skills, experience)
+## CI
 
-**Deploy**
-This app can be deployed to Vercel, Netlify, or any platform that supports Next.js. Make sure to add the environment variables in the hosting provider.
+GitHub Actions runs **typecheck → lint → build** on every push and PR to `main`.
+A **Lighthouse CI** job runs on PRs and enforces accessibility ≥ 90 and SEO ≥ 90.
 
-**Notes**
-- Supabase helpers expect the `NEXT_PUBLIC_SUPABASE_*` variables (see `lib/supabase/client.ts`).
+Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` as repository secrets before the first CI run.
 
-If you want this README expanded (demo screenshots, CI, deploy config, or contributor guide), tell me what to include and I will add it.
+## Deploy
+
+Deploys to Vercel. Add the two environment variables above in the Vercel project settings.
