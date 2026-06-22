@@ -2,7 +2,7 @@ import type { SiteConfig } from "@/types/site"
 
 export const siteConfig: SiteConfig = {
   name: "Dipto Karmakar",
-  title: "Senior Software Engineer",
+  title: "Senior Frontend Engineer",
   tagline:
     "Building scalable React, TypeScript, and real-time web applications.",
   summary:
@@ -17,7 +17,7 @@ export const siteConfig: SiteConfig = {
     "Senior Frontend Engineer — 10+ years in React, TypeScript, and Next.js, now extending into full-stack engineering. Open to senior/lead remote roles.",
   siteUrl: "https://diptokarmakar.me",
   keywords: [
-    "Senior Software Engineer",
+    "Senior Frontend Engineer",
     "React",
     "TypeScript",
     "Next.js",
