@@ -126,4 +126,32 @@ export const experiences: ExperienceItem[] = [
     ],
     technologies: ["Ruby", "Rails", "React", "JavaScript"],
   },
+  {
+    id: "microverse-technical-support-engineer-pt",
+    role: "Technical Support Engineer",
+    company: "Microverse",
+    period: "Feb 2019 - May 2019",
+    location: "San Francisco Bay Area, USA",
+    contractType: "part-time",
+    workMode: "remote",
+    impact: [
+      "Completed 100+ code reviews in HTML, CSS, Ruby, Databases, and Ruby on Rails for students at various stages.",
+    ],
+    technologies: ["Ruby", "Rails", "HTML", "CSS", "SQL"],
+  },
+  {
+    id: "unipolar-software-developer",
+    role: "Software Developer",
+    company: "Unipolar Automation Technologies",
+    period: "Jan 2016 - Sep 2017",
+    location: "Dhaka, Bangladesh",
+    contractType: "full-time",
+    workMode: "onsite",
+    impact: [
+      "Built a desktop application for real-time monitoring of 100 color packaging machines simultaneously.",
+      "Developed a desktop application with millisecond-level real-time data plotting for gas turbine monitoring at a power plant, reducing maintenance costs by 40%.",
+      "Built a product quantity slip generator that sent data directly to conveyor machines for automated counting during van loading, improving shipment throughput by 3x.",
+    ],
+    technologies: ["SQL", "Desktop Development"],
+  },
 ]
