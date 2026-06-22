@@ -15,7 +15,7 @@ export async function getHeroContent(): Promise<QueryResult<HeroContent>> {
 
   const { data, error } = await supabase
     .from("hero_content")
-    .select("*")
+    .select("title, headline, tagline, availability")
     .eq("id", 1)
     .single()
 
