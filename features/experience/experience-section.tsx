@@ -2,12 +2,10 @@ import { Briefcase } from "lucide-react"
 import Image from "next/image"
 
 import { Reveal } from "@/components/shared/reveal"
-import { about } from "@/content/about"
-import { experiences } from "@/content/experience"
 import { siteConfig } from "@/content/site"
+import { getAboutContent } from "@/lib/supabase/queries/about-content"
+import { getExperiences } from "@/lib/supabase/queries/experiences"
 import type { ExperienceItem } from "@/types/experience"
-
-const timeline = experiences.slice(0, 4)
 
 function RoleRow({ role, delay }: Readonly<{ role: ExperienceItem; delay: number }>) {
   return (
@@ -22,9 +20,17 @@ function RoleRow({ role, delay }: Readonly<{ role: ExperienceItem; delay: number
           {role.period}
         </span>
       </div>
-      <p className="mt-2 max-w-xl text-sm leading-relaxed text-pretty text-muted-foreground">
-        {role.impact[0]}
-      </p>
+      <ul className="mt-2 max-w-xl space-y-1.5">
+        {role.impact.map((point) => (
+          <li
+            key={point}
+            className="flex gap-2 text-sm leading-relaxed text-muted-foreground"
+          >
+            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent-cyan/60" />
+            {point}
+          </li>
+        ))}
+      </ul>
       <ul className="mt-3 flex flex-wrap gap-1.5">
         {role.technologies.map((tag) => (
           <li
@@ -39,7 +45,12 @@ function RoleRow({ role, delay }: Readonly<{ role: ExperienceItem; delay: number
   )
 }
 
-export function ExperienceSection() {
+export async function ExperienceSection() {
+  const [experiences, about] = await Promise.all([
+    getExperiences(),
+    getAboutContent(),
+  ])
+
   return (
     <section
       id="about"
@@ -109,7 +120,7 @@ export function ExperienceSection() {
               experience
             </div>
             <ol className="relative border-l border-border pl-0">
-              {timeline.map((role, i) => (
+              {experiences.map((role, i) => (
                 <RoleRow key={role.id} role={role} delay={i * 80} />
               ))}
             </ol>

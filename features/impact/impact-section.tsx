@@ -1,12 +1,14 @@
 import { Reveal } from "@/components/shared/reveal"
-import { impactStats } from "@/content/impact"
+import { getImpactStats } from "@/lib/supabase/queries/impact-stats"
 
-export function ImpactSection() {
+export async function ImpactSection() {
+  const stats = await getImpactStats()
+
   return (
     <section className="relative border-y border-border bg-card/30">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <div className="grid grid-cols-2 divide-x divide-y divide-border md:grid-cols-4 md:divide-y-0">
-          {impactStats.map((stat, i) => (
+          {stats.map((stat, i) => (
             <Reveal
               key={stat.label}
               delay={i * 80}

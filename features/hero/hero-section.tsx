@@ -4,20 +4,23 @@ import { InteractiveGrid } from "@/components/shared/interactive-grid"
 import { GithubIcon } from "@/components/shared/social-icons"
 import { TerminalStatus } from "@/components/shared/terminal-status"
 import { siteConfig } from "@/content/site"
+import { getHeroContent } from "@/lib/supabase/queries/hero-content"
 
-function StatusChip() {
+function StatusChip({ availability }: Readonly<{ availability: string }>) {
   return (
     <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1.5 font-mono text-xs text-muted-foreground backdrop-blur">
       <span className="relative flex h-2 w-2">
         <span className="animate-pulse-soft absolute inline-flex h-full w-full rounded-full bg-accent-cyan" />
         <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-cyan" />
       </span>
-      <span className="text-foreground/80">{siteConfig.availability}</span>
+      <span className="text-foreground/80">{availability}</span>
     </div>
   )
 }
 
-export function HeroSection() {
+export async function HeroSection() {
+  const hero = await getHeroContent()
+
   return (
     <section className="relative overflow-hidden">
       <div className="bg-dot-grid pointer-events-none absolute inset-0 opacity-60" />
@@ -32,7 +35,7 @@ export function HeroSection() {
                 {"// dipto karmakar"}
               </p>
               <div className="mt-6">
-                <StatusChip />
+                <StatusChip availability={hero.availability} />
               </div>
             </div>
 
@@ -47,14 +50,14 @@ export function HeroSection() {
               className="animate-rise-in mt-4 font-mono text-sm tracking-wide text-accent-cyan"
               style={{ animationDelay: "140ms" }}
             >
-              {siteConfig.title}
+              {hero.title}
             </p>
 
             <p
               className="animate-rise-in mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted-foreground"
               style={{ animationDelay: "200ms" }}
             >
-              {siteConfig.headline}
+              {hero.headline}
             </p>
 
             <div
