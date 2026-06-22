@@ -8,13 +8,13 @@ export const siteConfig: SiteConfig = {
   summary:
     "Senior Frontend Engineer with 10+ years building scalable, high-performance React and TypeScript applications, backed by full-stack capability in Node.js, FastAPI, Django, and PostgreSQL. Specialized in frontend architecture, design systems, and real-time, data-intensive interfaces.",
   headline:
-    "I architect interfaces and systems that hold up under real traffic — 10+ years across React, TypeScript, and Next.js, now building deeper into full-stack and AI engineering.",
+    "I architect interfaces and systems that hold up under real traffic — 10+ years across React, TypeScript, and Next.js, now building deeper into full-stack and system engineering.",
   availability: "available for senior / lead roles",
   location: "Dhaka, Bangladesh (Remote)",
   locationShort: "Dhaka, Bangladesh",
   timezone: "GMT+6",
   description:
-    "Senior Frontend Engineer with 10+ years building scalable, high-performance React and TypeScript applications, now moving deeper into full-stack and AI engineering.",
+    "Senior Frontend Engineer with 10+ years building scalable, high-performance React and TypeScript applications, now moving deeper into full-stack and system engineering.",
   siteUrl: "https://diptokarmakar.me",
   keywords: [
     "Senior Software Engineer",
@@ -28,13 +28,12 @@ export const siteConfig: SiteConfig = {
     "WebSockets",
     "GraphQL",
     "FastAPI",
-    "AI engineering",
     "Remote engineer",
     "Dipto Karmakar",
   ],
   overview: [
     "Building scalable React, TypeScript, and real-time web applications.",
-    "Senior Frontend Engineer with 10+ years building high-performance products and translating complex Figma design systems into reusable frontend architectures — now extending into full-stack and AI engineering.",
+    "Senior Frontend Engineer with 10+ years building high-performance products and translating complex Figma design systems into reusable frontend architectures — now extending into full-stack and system engineering.",
   ],
   specializations: [
     "React + TypeScript architecture",
