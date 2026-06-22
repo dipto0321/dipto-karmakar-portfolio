@@ -1,6 +1,5 @@
-import { impactStats } from "@/content/impact"
 import { supabase } from "@/lib/supabase/client"
-import type { DbImpactStat } from "@/lib/supabase/types"
+import type { DbImpactStat, QueryResult } from "@/lib/supabase/types"
 import type { ImpactStat } from "@/types/impact"
 
 function toImpactStat(row: DbImpactStat): ImpactStat {
@@ -11,12 +10,10 @@ function toImpactStat(row: DbImpactStat): ImpactStat {
   }
 }
 
-/**
- * Fetch impact stats ordered by sort_order.
- * Falls back to static content when Supabase is not configured or returns an error.
- */
-export async function getImpactStats(): Promise<ImpactStat[]> {
-  if (!supabase) return impactStats
+export async function getImpactStats(): Promise<QueryResult<ImpactStat[]>> {
+  if (!supabase) {
+    return { data: null, error: "Supabase is not configured." }
+  }
 
   const { data, error } = await supabase
     .from("impact_stats")
@@ -24,9 +21,9 @@ export async function getImpactStats(): Promise<ImpactStat[]> {
     .order("sort_order", { ascending: true })
 
   if (error || !data || data.length === 0) {
-    if (error) console.error("[supabase/impact-stats] fetch failed:", error)
-    return impactStats
+    console.error("[supabase/impact-stats] fetch failed:", error)
+    return { data: null, error: "Failed to load impact stats." }
   }
 
-  return (data as DbImpactStat[]).map(toImpactStat)
+  return { data: (data as DbImpactStat[]).map(toImpactStat), error: null }
 }

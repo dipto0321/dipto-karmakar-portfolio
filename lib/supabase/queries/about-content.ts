@@ -1,6 +1,5 @@
-import { about } from "@/content/about"
 import { supabase } from "@/lib/supabase/client"
-import type { DbAboutContent } from "@/lib/supabase/types"
+import type { DbAboutContent, QueryResult } from "@/lib/supabase/types"
 import type { About } from "@/types/about"
 
 function toAbout(row: DbAboutContent): About {
@@ -11,12 +10,10 @@ function toAbout(row: DbAboutContent): About {
   }
 }
 
-/**
- * Fetch about content (single row, id = 1).
- * Falls back to static content when Supabase is not configured or returns an error.
- */
-export async function getAboutContent(): Promise<About> {
-  if (!supabase) return about
+export async function getAboutContent(): Promise<QueryResult<About>> {
+  if (!supabase) {
+    return { data: null, error: "Supabase is not configured." }
+  }
 
   const { data, error } = await supabase
     .from("about_content")
@@ -25,9 +22,9 @@ export async function getAboutContent(): Promise<About> {
     .single()
 
   if (error || !data) {
-    if (error) console.error("[supabase/about-content] fetch failed:", error)
-    return about
+    console.error("[supabase/about-content] fetch failed:", error)
+    return { data: null, error: "Failed to load about content." }
   }
 
-  return toAbout(data as DbAboutContent)
+  return { data: toAbout(data as DbAboutContent), error: null }
 }

@@ -1,6 +1,5 @@
-import { siteConfig } from "@/content/site"
 import { supabase } from "@/lib/supabase/client"
-import type { DbHeroContent } from "@/lib/supabase/types"
+import type { DbHeroContent, QueryResult } from "@/lib/supabase/types"
 
 export interface HeroContent {
   title: string
@@ -9,21 +8,10 @@ export interface HeroContent {
   availability: string
 }
 
-function fallback(): HeroContent {
-  return {
-    title: siteConfig.title,
-    headline: siteConfig.headline,
-    tagline: siteConfig.tagline,
-    availability: siteConfig.availability,
+export async function getHeroContent(): Promise<QueryResult<HeroContent>> {
+  if (!supabase) {
+    return { data: null, error: "Supabase is not configured." }
   }
-}
-
-/**
- * Fetch hero content (single row, id = 1).
- * Falls back to static siteConfig fields when Supabase is not configured or returns an error.
- */
-export async function getHeroContent(): Promise<HeroContent> {
-  if (!supabase) return fallback()
 
   const { data, error } = await supabase
     .from("hero_content")
@@ -32,15 +20,19 @@ export async function getHeroContent(): Promise<HeroContent> {
     .single()
 
   if (error || !data) {
-    if (error) console.error("[supabase/hero-content] fetch failed:", error)
-    return fallback()
+    console.error("[supabase/hero-content] fetch failed:", error)
+    return { data: null, error: "Failed to load hero content." }
   }
 
   const row = data as DbHeroContent
   return {
-    title: row.title,
-    headline: row.headline,
-    tagline: row.tagline,
-    availability: row.availability,
+    data: {
+      title: row.title,
+      headline: row.headline,
+      tagline: row.tagline,
+      availability: row.availability,
+    },
+    error: null,
   }
 }
+

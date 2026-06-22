@@ -50,6 +50,10 @@
  * availability text
  */
 
+export type QueryResult<T> =
+  | { data: T; error: null }
+  | { data: null; error: string }
+
 export interface DbProjectLink {
   label: string
   url: string

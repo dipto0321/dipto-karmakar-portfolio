@@ -1,10 +1,11 @@
 import { ArrowUpRight } from "lucide-react"
 
+import { SectionError } from "@/components/shared/section-error"
 import { Reveal } from "@/components/shared/reveal"
 import { getProjects } from "@/lib/supabase/queries/projects"
 import type { Project } from "@/types/project"
 
-function ProjectRow({ project, index }: { project: Project; index: string }) {
+function ProjectRow({ project, index }: Readonly<{ project: Project; index: string }>) {
   const href = project.links[0]?.url
   const isLink = Boolean(href && href !== "#")
   const metric = project.architectureHighlights[0]
@@ -69,8 +70,7 @@ function ProjectRow({ project, index }: { project: Project; index: string }) {
 }
 
 export async function ProjectsSection() {
-  const projects = await getProjects()
-  const hasProjects = projects.length > 0
+  const { data: projects, error } = await getProjects()
 
   return (
     <section
@@ -92,7 +92,12 @@ export async function ProjectsSection() {
         </p>
       </div>
 
-      {hasProjects ? (
+      {(error || !projects) && (
+        <div className="mt-12">
+          <SectionError message="Projects could not be loaded from the CMS." />
+        </div>
+      )}
+      {projects && projects.length > 0 && (
         <div className="mt-12 border-b border-border">
           {projects.map((project, i) => (
             <Reveal key={project.id} delay={i * 90}>
@@ -103,7 +108,8 @@ export async function ProjectsSection() {
             </Reveal>
           ))}
         </div>
-      ) : (
+      )}
+      {projects?.length === 0 && (
         <p className="mt-12 border-t border-border pt-8 text-sm leading-relaxed text-muted-foreground">
           Detailed case studies are being written and published in public. In
           the meantime, the experience below covers real-world impact across a

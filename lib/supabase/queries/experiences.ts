@@ -1,6 +1,5 @@
-import { experiences } from "@/content/experience"
 import { supabase } from "@/lib/supabase/client"
-import type { DbExperience } from "@/lib/supabase/types"
+import type { DbExperience, QueryResult } from "@/lib/supabase/types"
 import type { ExperienceItem } from "@/types/experience"
 
 function toExperienceItem(row: DbExperience): ExperienceItem {
@@ -18,12 +17,10 @@ function toExperienceItem(row: DbExperience): ExperienceItem {
   }
 }
 
-/**
- * Fetch all experiences ordered by sort_order.
- * Falls back to static content when Supabase is not configured or returns an error.
- */
-export async function getExperiences(): Promise<ExperienceItem[]> {
-  if (!supabase) return experiences
+export async function getExperiences(): Promise<QueryResult<ExperienceItem[]>> {
+  if (!supabase) {
+    return { data: null, error: "Supabase is not configured." }
+  }
 
   const { data, error } = await supabase
     .from("experiences")
@@ -31,9 +28,9 @@ export async function getExperiences(): Promise<ExperienceItem[]> {
     .order("sort_order", { ascending: true })
 
   if (error || !data || data.length === 0) {
-    if (error) console.error("[supabase/experiences] fetch failed:", error)
-    return experiences
+    console.error("[supabase/experiences] fetch failed:", error)
+    return { data: null, error: "Failed to load experiences." }
   }
 
-  return (data as DbExperience[]).map(toExperienceItem)
+  return { data: (data as DbExperience[]).map(toExperienceItem), error: null }
 }
