@@ -7,4 +7,6 @@ export interface ExperienceItem {
   impact: readonly string[]
   technologies: string[]
   current?: boolean
+  contractType?: string
+  workMode?: string
 }

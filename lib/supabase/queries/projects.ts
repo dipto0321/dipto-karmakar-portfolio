@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase/client"
-import type { DbProject } from "@/lib/supabase/types"
+import type { DbProject, QueryResult } from "@/lib/supabase/types"
 import type { Project } from "@/types/project"
 
 function toProject(row: DbProject): Project {
@@ -14,12 +14,10 @@ function toProject(row: DbProject): Project {
   }
 }
 
-/**
- * Fetch all projects ordered by sort_order.
- * Returns an empty array when Supabase is not configured or returns an error.
- */
-export async function getProjects(): Promise<Project[]> {
-  if (!supabase) return []
+export async function getProjects(): Promise<QueryResult<Project[]>> {
+  if (!supabase) {
+    return { data: null, error: "Supabase is not configured." }
+  }
 
   const { data, error } = await supabase
     .from("projects")
@@ -28,8 +26,8 @@ export async function getProjects(): Promise<Project[]> {
 
   if (error || !data) {
     console.error("[supabase/projects] fetch failed:", error)
-    return []
+    return { data: null, error: "Failed to load projects." }
   }
 
-  return (data as DbProject[]).map(toProject)
+  return { data: (data as DbProject[]).map(toProject), error: null }
 }
