@@ -3,18 +3,14 @@ import type { SiteConfig } from "@/types/site"
 export const siteConfig: SiteConfig = {
   name: "Dipto Karmakar",
   title: "Senior Frontend Engineer",
-  tagline:
-    "Building scalable React, TypeScript, and real-time web applications.",
   summary:
-    "Senior Frontend Engineer with 10+ years building scalable, high-performance React and TypeScript applications, backed by full-stack capability in Node.js, FastAPI, Django, and PostgreSQL. Specialized in frontend architecture, design systems, and real-time, data-intensive interfaces.",
-  headline:
-    "I architect interfaces and systems that hold up under real traffic — 10+ years across React, TypeScript, and Next.js, now building deeper into full-stack and system engineering.",
+    "Senior Frontend Engineer with a decade in software — specializing in React, TypeScript, and Next.js, with full-stack production delivery across FastAPI, Node.js, and PostgreSQL. Strong in frontend architecture, design systems, and real-time data interfaces.",
   availability: "available for senior / lead roles",
   location: "Dhaka, Bangladesh (Remote)",
   locationShort: "Dhaka, Bangladesh",
   timezone: "GMT+6",
   description:
-    "Senior Frontend Engineer — 10+ years in React, TypeScript, and Next.js, now extending into full-stack engineering. Open to senior/lead remote roles.",
+    "Senior Frontend Engineer — React and TypeScript specialist with full-stack production delivery across FastAPI and PostgreSQL. Open to senior/lead remote roles.",
   siteUrl: "https://diptokarmakar.me",
   keywords: [
     "Senior Frontend Engineer",
@@ -23,23 +19,13 @@ export const siteConfig: SiteConfig = {
     "Next.js",
     "Frontend Engineer",
     "Full-stack Engineer",
+    "FastAPI",
     "Real-time applications",
     "Design systems",
     "WebSockets",
     "GraphQL",
-    "FastAPI",
     "Remote engineer",
     "Dipto Karmakar",
-  ],
-  overview: [
-    "Building scalable React, TypeScript, and real-time web applications.",
-    "Senior Frontend Engineer with 10+ years building high-performance products and translating complex Figma design systems into reusable frontend architectures — now extending into full-stack and system engineering.",
-  ],
-  specializations: [
-    "React + TypeScript architecture",
-    "Real-time payment and dashboard interfaces",
-    "Design system implementation",
-    "Full-stack capability (Node, FastAPI, PostgreSQL)",
   ],
   resumePath: "/dipto-karmakar-resume.pdf",
   avatarPath: "/avatar.jpg",
