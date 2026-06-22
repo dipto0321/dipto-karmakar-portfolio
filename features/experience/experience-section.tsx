@@ -8,7 +8,10 @@ import { getAboutContent } from "@/lib/supabase/queries/about-content"
 import { getExperiences } from "@/lib/supabase/queries/experiences"
 import type { ExperienceItem } from "@/types/experience"
 
-function RoleRow({ role, delay }: Readonly<{ role: ExperienceItem; delay: number }>) {
+function RoleRow({
+  role,
+  delay,
+}: Readonly<{ role: ExperienceItem; delay: number }>) {
   return (
     <Reveal as="li" delay={delay} className="relative pb-10 pl-8 last:pb-0">
       <span className="absolute top-1.5 left-0 h-2.5 w-2.5 rounded-full border border-accent-cyan bg-background ring-4 ring-background" />
@@ -116,7 +119,10 @@ export async function ExperienceSection() {
                       </p>
                       <ul className="mt-2 space-y-1">
                         {cap.items.map((item) => (
-                          <li key={item} className="text-sm text-muted-foreground">
+                          <li
+                            key={item}
+                            className="text-sm text-muted-foreground"
+                          >
                             {item}
                           </li>
                         ))}

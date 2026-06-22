@@ -35,4 +35,3 @@ export async function getHeroContent(): Promise<QueryResult<HeroContent>> {
     error: null,
   }
 }
-
