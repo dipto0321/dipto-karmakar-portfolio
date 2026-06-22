@@ -54,7 +54,7 @@ function ProjectRow({ project, index }: { project: Project; index: string }) {
         href={href}
         target="_blank"
         rel="noreferrer"
-        className="group relative block border-t border-border py-8 transition-colors hover:bg-card/40 md:py-10"
+        className="group relative block border-t border-border border-l-2 border-l-transparent py-8 transition-colors hover:border-l-accent-cyan/60 hover:bg-card/40 md:py-10"
       >
         {inner}
       </a>
@@ -62,7 +62,7 @@ function ProjectRow({ project, index }: { project: Project; index: string }) {
   }
 
   return (
-    <div className="group relative block border-t border-border py-8 md:py-10">
+    <div className="group relative block border-t border-border border-l-2 border-l-transparent py-8 transition-colors hover:border-l-accent-cyan/60 hover:bg-card/40 md:py-10">
       {inner}
     </div>
   )
