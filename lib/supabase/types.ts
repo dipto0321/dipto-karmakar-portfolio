@@ -82,6 +82,8 @@ export interface DbExperience {
   period: string
   location: string | null
   is_current: boolean
+  contract_type: string | null
+  work_mode: string | null
   impact: string[]
   technologies: string[]
   sort_order: number

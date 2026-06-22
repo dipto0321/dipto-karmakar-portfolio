@@ -11,6 +11,8 @@ function toExperienceItem(row: DbExperience): ExperienceItem {
     period: row.period,
     location: row.location ?? "",
     current: row.is_current,
+    contractType: row.contract_type ?? undefined,
+    workMode: row.work_mode ?? undefined,
     impact: row.impact,
     technologies: row.technologies,
   }

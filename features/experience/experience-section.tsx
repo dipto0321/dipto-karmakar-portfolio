@@ -20,6 +20,13 @@ function RoleRow({ role, delay }: Readonly<{ role: ExperienceItem; delay: number
           {role.period}
         </span>
       </div>
+      {(role.contractType ?? role.workMode ?? role.location) && (
+        <p className="mt-0.5 font-mono text-[11px] text-muted-foreground/70">
+          {[role.contractType, role.workMode, role.location]
+            .filter(Boolean)
+            .join(" · ")}
+        </p>
+      )}
       <ul className="mt-2 max-w-xl space-y-1.5">
         {role.impact.map((point) => (
           <li
