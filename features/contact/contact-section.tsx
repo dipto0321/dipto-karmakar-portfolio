@@ -84,7 +84,9 @@ export function ContactSection() {
                   <a
                     href={c.href}
                     target={c.href.startsWith("http") ? "_blank" : undefined}
-                    rel={c.href.startsWith("http") ? "noreferrer" : undefined}
+                    rel={
+                      c.href.startsWith("http") ? "noreferrer" : undefined
+                    }
                     aria-label={`${c.label}${c.href.startsWith("http") ? " (opens in new tab)" : ""}`}
                     className="group flex items-center gap-4 bg-card px-5 py-4 transition-colors hover:bg-secondary/60"
                   >
@@ -105,24 +107,12 @@ export function ContactSection() {
 
             <div className="mt-4 flex items-center gap-2 px-1 font-mono text-xs text-muted-foreground">
               <MapPin className="h-3.5 w-3.5 text-accent-cyan" />
-              {siteConfig.locationShort} · {siteConfig.timezone} · remote · open
-              to relocation
+              {siteConfig.locationShort} · {siteConfig.timezone} · remote ·
+              open to relocation
             </div>
           </Reveal>
         </div>
       </div>
-
-      <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-6 sm:flex-row lg:px-8">
-          <p className="font-mono text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {siteConfig.name}
-          </p>
-          <p className="font-mono text-xs text-muted-foreground">
-            Next.js + TypeScript · Supabase · Designed with v0 · Pair-programmed
-            with Claude
-          </p>
-        </div>
-      </footer>
     </section>
   )
 }

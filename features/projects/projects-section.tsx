@@ -103,16 +103,16 @@ export async function ProjectsSection() {
         </div>
       )}
       {projects && projects.length > 0 && (
-        <div className="mt-12 border-b border-border">
+        <ul className="mt-12 list-none border-b border-border">
           {projects.map((project, i) => (
-            <Reveal key={project.id} delay={i * 90}>
+            <Reveal as="li" key={project.id} delay={i * 90}>
               <ProjectRow
                 project={project}
                 index={String(i + 1).padStart(2, "0")}
               />
             </Reveal>
           ))}
-        </div>
+        </ul>
       )}
       {projects?.length === 0 && (
         <p className="mt-12 border-t border-border pt-8 text-sm leading-relaxed text-muted-foreground">

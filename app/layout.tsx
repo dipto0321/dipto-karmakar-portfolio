@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
+import { SiteFooter } from "@/components/layout/site-footer"
 import { SiteHeader } from "@/components/layout/site-header"
 import { siteConfig } from "@/content/site"
 import { cn } from "@/lib/utils"
@@ -83,7 +84,6 @@ export default function RootLayout({
                 jobTitle: siteConfig.title,
                 url: siteConfig.siteUrl,
                 email: siteConfig.contact.email.replace("mailto:", ""),
-                telephone: siteConfig.contact.phone,
                 address: siteConfig.location,
                 description: siteConfig.summary,
                 sameAs: [
@@ -103,6 +103,7 @@ export default function RootLayout({
         </a>
         <SiteHeader />
         {children}
+        <SiteFooter />
         <Analytics />
         <SpeedInsights />
       </body>

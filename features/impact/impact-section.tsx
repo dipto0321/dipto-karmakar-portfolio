@@ -23,15 +23,17 @@ export async function ImpactSection() {
                 delay={i * 80}
                 className="px-5 py-8 md:px-7"
               >
-                <p className="font-heading text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-                  {stat.value}
-                </p>
-                <p className="mt-1.5 text-sm text-foreground/80">
-                  {stat.label}
-                </p>
-                <p className="mt-3 font-mono text-[11px] tracking-wide text-muted-foreground">
-                  {stat.detail}
-                </p>
+                <dl className="flex flex-col">
+                  <dd className="order-1 font-heading text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+                    {stat.value}
+                  </dd>
+                  <dt className="order-2 mt-1.5 text-sm text-foreground/80">
+                    {stat.label}
+                  </dt>
+                  <dd className="order-3 mt-3 font-mono text-[11px] tracking-wide text-muted-foreground">
+                    {stat.detail}
+                  </dd>
+                </dl>
               </Reveal>
             ))}
           </div>

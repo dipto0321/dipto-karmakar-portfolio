@@ -12,7 +12,7 @@ import { ProjectsSkeleton } from "@/features/projects/projects-skeleton"
 
 export default function Page() {
   return (
-    <main id="top" className="min-h-svh bg-background">
+    <main id="top" tabIndex={-1} className="min-h-svh bg-background outline-none">
       <Suspense fallback={<HeroSkeleton />}>
         <HeroSection />
       </Suspense>
