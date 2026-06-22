@@ -14,7 +14,7 @@ export const siteConfig: SiteConfig = {
   locationShort: "Dhaka, Bangladesh",
   timezone: "GMT+6",
   description:
-    "Senior Frontend Engineer with 10+ years building scalable, high-performance React and TypeScript applications, now moving deeper into full-stack and system engineering.",
+    "Senior Frontend Engineer — 10+ years in React, TypeScript, and Next.js, now extending into full-stack engineering. Open to senior/lead remote roles.",
   siteUrl: "https://diptokarmakar.me",
   keywords: [
     "Senior Software Engineer",
