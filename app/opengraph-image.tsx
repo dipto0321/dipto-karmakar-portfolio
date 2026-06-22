@@ -17,38 +17,54 @@ export default function OgImage() {
         flexDirection: "column",
         justifyContent: "flex-end",
         padding: "64px",
-        background:
-          "linear-gradient(135deg, #0a0f1e 0%, #0d1424 50%, #0a1628 100%)",
+        background: "#101318",
         fontFamily: "system-ui, sans-serif",
+        position: "relative",
       }}
     >
-      {/* Subtle grid background */}
+      {/* Dot grid */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           backgroundImage:
-            "radial-gradient(circle at 20% 50%, rgba(96,165,250,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(16,185,129,0.06) 0%, transparent 50%)",
+            "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
         }}
       />
 
-      {/* Avatar placeholder */}
+      {/* Cyan glow top-right */}
       <div
         style={{
           position: "absolute",
-          top: "64px",
-          right: "64px",
-          width: "80px",
-          height: "80px",
+          top: -120,
+          right: -120,
+          width: 480,
+          height: 480,
           borderRadius: "50%",
-          background: "rgba(96,165,250,0.15)",
-          border: "1px solid rgba(96,165,250,0.3)",
+          background: "rgba(34,212,232,0.07)",
+          filter: "blur(80px)",
+        }}
+      />
+
+      {/* Monogram badge */}
+      <div
+        style={{
+          position: "absolute",
+          top: 56,
+          right: 64,
+          width: 72,
+          height: 72,
+          borderRadius: 12,
+          background: "rgba(34,212,232,0.1)",
+          border: "1px solid rgba(34,212,232,0.25)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "rgba(96,165,250,0.9)",
-          fontSize: "24px",
+          color: "#22d4e8",
+          fontSize: 22,
           fontWeight: 700,
+          letterSpacing: "0.05em",
         }}
       >
         DK
@@ -58,25 +74,27 @@ export default function OgImage() {
       <p
         style={{
           margin: 0,
-          marginBottom: "16px",
-          fontSize: "14px",
-          letterSpacing: "0.25em",
+          marginBottom: 20,
+          fontSize: 13,
+          letterSpacing: "0.22em",
           textTransform: "uppercase",
-          color: "rgba(96,165,250,0.8)",
+          color: "#22d4e8",
+          fontWeight: 500,
         }}
       >
-        Portfolio
+        {"// portfolio"}
       </p>
 
       {/* Name */}
       <h1
         style={{
           margin: 0,
-          marginBottom: "12px",
-          fontSize: "72px",
+          marginBottom: 14,
+          fontSize: 76,
           fontWeight: 700,
-          color: "#f1f5f9",
-          lineHeight: 1.1,
+          color: "#f4f5f7",
+          lineHeight: 1.05,
+          letterSpacing: "-0.02em",
         }}
       >
         {siteConfig.name}
@@ -86,23 +104,34 @@ export default function OgImage() {
       <p
         style={{
           margin: 0,
-          marginBottom: "32px",
-          fontSize: "28px",
-          color: "rgba(148,163,184,0.9)",
+          marginBottom: 36,
+          fontSize: 26,
+          color: "rgba(244,245,247,0.55)",
           fontWeight: 400,
+          letterSpacing: "0.01em",
         }}
       >
         {siteConfig.title}
       </p>
 
-      {/* Tagline */}
+      {/* Divider */}
+      <div
+        style={{
+          width: 48,
+          height: 1,
+          background: "rgba(34,212,232,0.4)",
+          marginBottom: 28,
+        }}
+      />
+
+      {/* Stack line */}
       <p
         style={{
           margin: 0,
-          fontSize: "18px",
-          color: "rgba(100,116,139,0.9)",
-          maxWidth: "700px",
-          lineHeight: 1.6,
+          fontSize: 16,
+          color: "#64748b",
+          letterSpacing: "0.04em",
+          fontWeight: 400,
         }}
       >
         React · TypeScript · Next.js · Node.js · Real-time systems
