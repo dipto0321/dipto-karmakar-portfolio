@@ -1,0 +1,31 @@
+name: Supabase Keep-Alive
+
+on:
+  # Runs at 00:00 UTC every 3 days.
+  # Supabase pauses the free-tier database after 7 days of inactivity,
+  # so this provides a comfortable buffer before the pause threshold.
+  schedule:
+    - cron: "0 0 */3 * *"
+  # Allows manual triggering from the GitHub Actions tab for testing.
+  workflow_dispatch:
+
+jobs:
+  ping:
+    name: Ping Supabase keep-alive endpoint
+    runs-on: ubuntu-latest
+
+    steps:
+      # ⚠️  Insert your production domain below before enabling this workflow.
+      #     Current production site: https://diptokarmakar.me
+      #
+      # The endpoint must return HTTP 200 with an empty body or a JSON payload.
+      # curl -f fails on any HTTP status ≥ 400, so a paused/broken database
+      # will surface as a failed workflow run.
+      - name: Ping keep-alive endpoint
+        run: |
+          curl -f -s -H "Cache-Control: no-cache" \
+            "https://diptokarmakar.me/api/keep-alive" \
+            > /tmp/keep-alive-response.json
+
+      - name: Log response
+        run: cat /tmp/keep-alive-response.json
