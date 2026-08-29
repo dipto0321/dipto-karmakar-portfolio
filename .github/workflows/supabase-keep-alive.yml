@@ -15,17 +15,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ⚠️  Insert your production domain below before enabling this workflow.
-      #     Current production site: https://diptokarmakar.me
-      #
-      # The endpoint must return HTTP 200 with an empty body or a JSON payload.
-      # curl -f fails on any HTTP status ≥ 400, so a paused/broken database
-      # will surface as a failed workflow run.
+      # Production domain: https://diptokarmakar.me
+      # -L follows the 307 redirect to www.diptokarmakar.me at the Vercel edge.
+      # -f fails on HTTP ≥ 400; -sS shows errors while suppressing progress.
       - name: Ping keep-alive endpoint
         run: |
-          curl -f -s -H "Cache-Control: no-cache" \
+          curl -f -sS -L -H "Cache-Control: no-cache" \
             "https://diptokarmakar.me/api/keep-alive" \
             > /tmp/keep-alive-response.json
 
-      - name: Log response
-        run: cat /tmp/keep-alive-response.json
+      - name: Validate response body
+        run: |
+          echo "Response body:"
+          cat /tmp/keep-alive-response.json
+          jq -e '.success == true' /tmp/keep-alive-response.json > /dev/null || {
+            echo "::error::Keep-alive endpoint did not return {\"success\": true}"
+            exit 1
+          }
