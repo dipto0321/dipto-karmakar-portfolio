@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { getHeroContent } from "@/lib/supabase/queries/hero-content"
+import { supabase } from "@/lib/supabase/client"
 
 /**
  * Keep-alive endpoint that pings the Supabase database to prevent the
@@ -24,12 +24,23 @@ const noStoreHeaders = {
 
 export async function GET() {
   try {
-    // Minimal single-row read that triggers a live database hit.
-    const { data, error } = await getHeroContent()
-
-    if (error || !data) {
+    if (!supabase) {
       return NextResponse.json(
-        { success: false, message: error ?? "No data returned from database." },
+        { success: false, message: "Supabase is not configured." },
+        {
+          status: 500,
+          headers: noStoreHeaders,
+        }
+      )
+    }
+
+    // Minimal read that triggers a live database hit without depending on
+    // a specific row shape/count in CMS tables.
+    const { error } = await supabase.from("hero_content").select("id").limit(1)
+
+    if (error) {
+      return NextResponse.json(
+        { success: false, message: error.message },
         {
           status: 500,
           headers: noStoreHeaders,
