@@ -4,8 +4,8 @@ Guidance for Claude Code working in this repository.
 
 ## Project
 
-Personal portfolio for **Dipto Karmakar** — Senior Frontend Engineer (10+ yrs), evolving
-toward full-stack + AI engineering, targeting senior/lead remote roles (EU/US). The site
+Personal portfolio for **Dipto Karmakar** — Full-Stack Engineer (10+ yrs in software;
+senior-level React/TypeScript since 2021), targeting senior/lead remote roles (EU/US),
 must read as **modern, techy, and professional**, expressing a systems-thinking,
 idea-driven engineer. Live target: `https://diptokarmakar.me`.
 

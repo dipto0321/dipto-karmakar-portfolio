@@ -117,8 +117,8 @@ export async function ProjectsSection() {
       {projects?.length === 0 && (
         <p className="mt-12 border-t border-border pt-8 text-sm leading-relaxed text-muted-foreground">
           Detailed case studies are being written and published in public. In
-          the meantime, the experience below covers real-world impact across a
-          decade of work.
+          the meantime, the experience below covers real-world impact across 10+
+          years in software.
         </p>
       )}
     </section>

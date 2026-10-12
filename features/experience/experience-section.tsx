@@ -98,7 +98,7 @@ export async function ExperienceSection() {
                     <p>
                       {siteConfig.locationShort} · {siteConfig.timezone}
                     </p>
-                    <p className="text-accent-cyan">10+ yrs shipping</p>
+                    <p className="text-accent-cyan">10+ yrs in software</p>
                   </div>
                 </div>
               </Reveal>

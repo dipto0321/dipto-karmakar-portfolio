@@ -16,7 +16,7 @@ test.describe("cms content", () => {
     ).toBeVisible()
     await expect(
       page.getByRole("region", { name: /introduction/i }).getByText(
-        /Senior Frontend Engineer/i
+        /Full-Stack Engineer/i
       )
     ).toBeVisible()
   })
