@@ -59,9 +59,10 @@ export function ContactSection() {
 
             <p className="mt-5 max-w-lg text-sm leading-relaxed text-pretty text-muted-foreground md:text-base">
               Open to senior and lead engineering roles, and to interesting
-              full-stack or AI problems. Currently remote; open to relocation
-              for the right opportunity. The fastest way to reach me is email —
-              I read everything.
+              full-stack or AI problems. Looking for a long-term full-stack
+              role — fully remote, or on-site with relocation to any country
+              (preferred). The fastest way to reach me is email — I read
+              everything.
             </p>
 
             <a
@@ -107,8 +108,8 @@ export function ContactSection() {
 
             <div className="mt-4 flex items-center gap-2 px-1 font-mono text-xs text-muted-foreground">
               <MapPin className="h-3.5 w-3.5 text-accent-cyan" />
-              {siteConfig.locationShort} · {siteConfig.timezone} · remote ·
-              open to relocation
+              {siteConfig.locationShort} · {siteConfig.timezone} · remote or
+              relocation
             </div>
           </Reveal>
         </div>

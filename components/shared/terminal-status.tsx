@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 type Line = {
   /** Plain text used for the typewriter measurement. */
@@ -17,10 +17,10 @@ const lines: Line[] = [
     render: <span>whoami</span>,
   },
   {
-    text: "Dipto Karmakar — senior software engineer",
+    text: "Dipto Karmakar — full-stack engineer",
     render: (
       <span className="text-foreground/90">
-        Dipto Karmakar — senior software engineer
+        Dipto Karmakar — full-stack engineer
       </span>
     ),
   },
@@ -30,12 +30,12 @@ const lines: Line[] = [
     render: <span>cat status.json</span>,
   },
   {
-    text: '{ focus: "frontend + full-stack", open: true }',
+    text: '{ focus: "full-stack", open: true }',
     render: (
       <span className="text-foreground/90">
         {"{ "}
         <span className="text-muted-foreground">focus:</span>{" "}
-        {'"frontend + full-stack"'},{" "}
+        {'"full-stack"'},{" "}
         <span className="text-muted-foreground">open:</span>{" "}
         <span className="text-accent-cyan">true</span>
         {" }"}
@@ -48,15 +48,19 @@ export function TerminalStatus() {
   const [lineIndex, setLineIndex] = useState(0)
   const [charCount, setCharCount] = useState(0)
   const [done, setDone] = useState(false)
-  const started = useRef(false)
 
   useEffect(() => {
-    if (started.current) return
-    started.current = true
-
     let mounted = true
     let li = 0
     let ci = 0
+    const timers: ReturnType<typeof setTimeout>[] = []
+    const later = (fn: () => void, ms: number) => {
+      const t = setTimeout(() => {
+        if (mounted) fn()
+      }, ms)
+      timers.push(t)
+      return t
+    }
 
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -64,14 +68,13 @@ export function TerminalStatus() {
     if (prefersReduced) {
       // Reveal everything on the next tick — keep all state updates async so
       // we never call setState synchronously inside the effect body.
-      const revealTimer = setTimeout(() => {
-        if (!mounted) return
+      later(() => {
         setLineIndex(lines.length)
         setDone(true)
       }, 0)
       return () => {
         mounted = false
-        clearTimeout(revealTimer)
+        timers.forEach(clearTimeout)
       }
     }
 
@@ -85,20 +88,20 @@ export function TerminalStatus() {
       if (ci < current.text.length) {
         ci += 1
         setCharCount(ci)
-        setTimeout(tick, 28)
+        later(tick, 28)
       } else {
         li += 1
         ci = 0
         setLineIndex(li)
         setCharCount(0)
-        setTimeout(tick, li >= lines.length ? 0 : 320)
+        later(tick, li >= lines.length ? 0 : 320)
       }
     }
 
-    const startTimer = setTimeout(tick, 500)
+    later(tick, 500)
     return () => {
       mounted = false
-      clearTimeout(startTimer)
+      timers.forEach(clearTimeout)
     }
   }, [])
 
